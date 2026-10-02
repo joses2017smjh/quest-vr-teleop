@@ -1,0 +1,27 @@
+Rotor vs field slope +1.11 (ideal +1.00), following on 95% of steps, stalled on 0%, pole slips 0.
+   forward: rotor moved +0.95x the field
+  backward: rotor moved +0.99x the field
+  rotor span 0.43 rev for a field span of 0.43 rev
+Repeat passes at the same field angle (72 angles): encoder spread median 0.00, worst 0.02 electrical turns (backward at +4.94). Fixed to the rotor.
+  segment  forward: field  +5.00 e-turns, encoder  +4.48  (+0.90x)
+  segment backward: field  -2.00 e-turns, encoder  -1.98  (+0.99x)
+  segment  forward: field  +2.00 e-turns, encoder  +1.98  (+0.99x)
+  segment backward: field  -2.00 e-turns, encoder  -1.98  (+0.99x)
+  segment  forward: field  +2.00 e-turns, encoder  +1.97  (+0.99x)
+  segment backward: field  -2.00 e-turns, encoder  -1.97  (+0.99x)
+  segment  forward: field  +3.00 e-turns, encoder  +2.97  (+0.99x)
+  segment backward: field  -6.00 e-turns, encoder  -5.97  (+0.99x)
+PHASE ORDER +1 matches the encoder: when it moves, it moves +1.11x the field.
+  forward tracking stretches: 11, rotor-minus-field +117 deg e, spread 8 deg (fixed magnet: all alike)
+  backward tracking stretches: 8, rotor-minus-field +127 deg e, spread 3 deg (fixed magnet: all alike)
+Flux offset measured here +2.119 rad (mod 2pi).
+  stored +58.612 rad is -3 deg e from it: GOOD (torque falls as cos of this; 90 deg means none)
+  friction lag +4.9 deg e (9% of the torque this current makes)
+  encoder non-linearity 21 deg e peak-to-peak (once per rev 11, twice 4)
+Phase currents (amplitude, phase error, DC offset):
+  phase a: 1.557 A, -0.9 deg, +0.008 A
+  phase b: 1.606 A, -0.4 deg, +0.005 A
+  phase c: 1.547 A, +1.4 deg, -0.000 A
+  balance min/max 0.96 (1.00 ideal); Kirchhoff sum mean +0.014 A
+  V/I 1.178 ohm, varies 2.3% with field angle, highest along phase a (ESC output 1)
+Encoder noise at rest: median 0, max 1 counts; unsettled steps 0

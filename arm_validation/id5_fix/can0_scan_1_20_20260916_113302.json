@@ -1,0 +1,530 @@
+{
+  "created": "20260916_113302",
+  "bus": "can0",
+  "ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "link_before": {
+    "state": "ERROR-ACTIVE",
+    "bitrate": 1000000,
+    "operstate": "UP",
+    "restarts": 0,
+    "bus_error": 0,
+    "arbitration_lost": 0,
+    "error_warning": 44,
+    "error_passive": 1494,
+    "bus_off": 5381,
+    "rx_packets": 445114,
+    "rx_errors": 0,
+    "tx_packets": 222723,
+    "tx_errors": 0
+  },
+  "link_after": {
+    "state": "ERROR-ACTIVE",
+    "bitrate": 1000000,
+    "operstate": "UP",
+    "restarts": 0,
+    "bus_error": 0,
+    "arbitration_lost": 0,
+    "error_warning": 74,
+    "error_passive": 1494,
+    "bus_off": 5381,
+    "rx_packets": 445494,
+    "rx_errors": 0,
+    "tx_packets": 222958,
+    "tx_errors": 0
+  },
+  "traffic": {
+    "tx": 235,
+    "rx": 145,
+    "timeouts": 90,
+    "error_frames": 126,
+    "tx_fail": 0
+  },
+  "online": [
+    1,
+    3,
+    5,
+    7,
+    9
+  ],
+  "scan": {
+    "1": {
+      "addressed_id": 1,
+      "online": true,
+      "ping_ok": 3,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        1,
+        1,
+        1
+      ],
+      "sdo_reply_rate": "3/3",
+      "self_reported_id": 1,
+      "id_consistent": true,
+      "status": {
+        "mode_raw": 1,
+        "mode": "IDLE",
+        "mode_safe": true,
+        "error": {
+          "raw": 0,
+          "hex": "0x0000",
+          "bits": [],
+          "unknown_mask": null,
+          "critical": false
+        },
+        "watchdog_timeout": 1000
+      },
+      "snapshot": {
+        "device_id": 1,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 3,
+        "gear_ratio": 1.0,
+        "bus_voltage": 22.884031295776367,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 816,
+        "encoder_i2c_reading": 816,
+        "encoder_n_rotations": 0,
+        "encoder_position": 1.2517284154891968,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": -44.03857421875,
+        "position_measured": 1.2517284154891968,
+        "velocity_measured": 0.0,
+        "i_a": -0.0335693359375,
+        "i_b": 0.01678466796875,
+        "i_c": -0.0335693359375
+      }
+    },
+    "2": {
+      "addressed_id": 2,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "3": {
+      "addressed_id": 3,
+      "online": true,
+      "ping_ok": 3,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        3,
+        3,
+        3
+      ],
+      "sdo_reply_rate": "3/3",
+      "self_reported_id": 3,
+      "id_consistent": true,
+      "status": {
+        "mode_raw": 1,
+        "mode": "IDLE",
+        "mode_safe": true,
+        "error": {
+          "raw": 0,
+          "hex": "0x0000",
+          "bits": [],
+          "unknown_mask": null,
+          "critical": false
+        },
+        "watchdog_timeout": 1000
+      },
+      "snapshot": {
+        "device_id": 3,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 3,
+        "gear_ratio": 1.0,
+        "bus_voltage": 23.144187927246094,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 2768,
+        "encoder_i2c_reading": 2768,
+        "encoder_n_rotations": -1,
+        "encoder_position": -2.0371265411376953,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": 19.785003662109375,
+        "position_measured": -2.0371265411376953,
+        "velocity_measured": 0.0,
+        "i_a": 0.01678466796875,
+        "i_b": -0.01678466796875,
+        "i_c": 0.01678466796875
+      }
+    },
+    "4": {
+      "addressed_id": 4,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "5": {
+      "addressed_id": 5,
+      "online": true,
+      "ping_ok": 3,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        5,
+        5,
+        5
+      ],
+      "sdo_reply_rate": "3/3",
+      "self_reported_id": 5,
+      "id_consistent": true,
+      "status": {
+        "mode_raw": 2,
+        "mode": "DAMPING",
+        "mode_safe": true,
+        "error": {
+          "raw": 8256,
+          "hex": "0x2040",
+          "bits": [
+            "WATCHDOG_TIMEOUT",
+            "ENCODER_FAULT"
+          ],
+          "unknown_mask": null,
+          "critical": true
+        },
+        "watchdog_timeout": 1000
+      },
+      "snapshot": {
+        "device_id": 5,
+        "firmware_version": 539296294,
+        "mode_raw": 2,
+        "error_raw": 8256,
+        "update_counter": 3,
+        "gear_ratio": 1.0,
+        "bus_voltage": 22.981042861938477,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 3,
+        "encoder_i2c_reading": 51946,
+        "encoder_n_rotations": 0,
+        "encoder_position": 0.004601942375302315,
+        "encoder_velocity": 40.51002883911133,
+        "encoder_flux_offset": -43.9334602355957,
+        "position_measured": 0.004601942375302315,
+        "velocity_measured": 40.51002883911133,
+        "i_a": -0.0,
+        "i_b": 0.01678466796875,
+        "i_c": -0.05035400390625
+      }
+    },
+    "6": {
+      "addressed_id": 6,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "7": {
+      "addressed_id": 7,
+      "online": true,
+      "ping_ok": 3,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        7,
+        7,
+        7
+      ],
+      "sdo_reply_rate": "3/3",
+      "self_reported_id": 7,
+      "id_consistent": true,
+      "status": {
+        "mode_raw": 1,
+        "mode": "IDLE",
+        "mode_safe": true,
+        "error": {
+          "raw": 0,
+          "hex": "0x0000",
+          "bits": [],
+          "unknown_mask": null,
+          "critical": false
+        },
+        "watchdog_timeout": 1000
+      },
+      "snapshot": {
+        "device_id": 7,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 1,
+        "gear_ratio": 1.0,
+        "bus_voltage": 22.974870681762695,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 861,
+        "encoder_i2c_reading": 861,
+        "encoder_n_rotations": 0,
+        "encoder_position": 1.320757508277893,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": -19.932178497314453,
+        "position_measured": 1.320757508277893,
+        "velocity_measured": 0.0,
+        "i_a": -0.067138671875,
+        "i_b": -0.01678466796875,
+        "i_c": 0.01678466796875
+      }
+    },
+    "8": {
+      "addressed_id": 8,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "9": {
+      "addressed_id": 9,
+      "online": true,
+      "ping_ok": 3,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        9,
+        9,
+        9
+      ],
+      "sdo_reply_rate": "3/3",
+      "self_reported_id": 9,
+      "id_consistent": true,
+      "status": {
+        "mode_raw": 1,
+        "mode": "IDLE",
+        "mode_safe": true,
+        "error": {
+          "raw": 0,
+          "hex": "0x0000",
+          "bits": [],
+          "unknown_mask": null,
+          "critical": false
+        },
+        "watchdog_timeout": 1000
+      },
+      "snapshot": {
+        "device_id": 9,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 0,
+        "gear_ratio": 1.0,
+        "bus_voltage": 23.016281127929688,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 3974,
+        "encoder_i2c_reading": 3974,
+        "encoder_n_rotations": -1,
+        "encoder_position": -0.1871456652879715,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": -40.60542678833008,
+        "position_measured": -0.1871456652879715,
+        "velocity_measured": 0.0,
+        "i_a": -0.01678466796875,
+        "i_b": -0.08392333984375,
+        "i_c": 0.01678466796875
+      }
+    },
+    "10": {
+      "addressed_id": 10,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "11": {
+      "addressed_id": 11,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "12": {
+      "addressed_id": 12,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "13": {
+      "addressed_id": 13,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "14": {
+      "addressed_id": 14,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "15": {
+      "addressed_id": 15,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "16": {
+      "addressed_id": 16,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "17": {
+      "addressed_id": 17,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "18": {
+      "addressed_id": 18,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "19": {
+      "addressed_id": 19,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    },
+    "20": {
+      "addressed_id": 20,
+      "online": false,
+      "ping_ok": 0,
+      "ping_attempts": 3,
+      "sdo_replies": [
+        null,
+        null,
+        null
+      ],
+      "sdo_reply_rate": "0/3",
+      "self_reported_id": null,
+      "id_consistent": false
+    }
+  }
+}

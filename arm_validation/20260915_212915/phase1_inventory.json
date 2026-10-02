@@ -1,0 +1,608 @@
+{
+  "created": "20260915_212915",
+  "phase": "1_can_and_id_inventory",
+  "buses": {
+    "can0": {
+      "limb": "left arm",
+      "usb_port": "3-4.1:1.0",
+      "link_before": {
+        "state": "ERROR-ACTIVE",
+        "bitrate": 1000000,
+        "restarts": 0,
+        "bus_error": 0,
+        "arbitration_lost": 0,
+        "error_warning": 0,
+        "error_passive": 0,
+        "bus_off": 0,
+        "rx_packets": 10,
+        "rx_errors": 0,
+        "tx_packets": 5,
+        "tx_errors": 0
+      },
+      "link_after": {
+        "state": "ERROR-ACTIVE",
+        "bitrate": 1000000,
+        "restarts": 0,
+        "bus_error": 0,
+        "arbitration_lost": 0,
+        "error_warning": 0,
+        "error_passive": 0,
+        "bus_off": 0,
+        "rx_packets": 97,
+        "rx_errors": 0,
+        "tx_packets": 62,
+        "tx_errors": 0
+      },
+      "error_delta": {
+        "restarts": 0,
+        "bus_error": 0,
+        "arbitration_lost": 0,
+        "error_warning": 0,
+        "error_passive": 0,
+        "bus_off": 0,
+        "rx_errors": 0,
+        "tx_errors": 0
+      },
+      "traffic": {
+        "tx": 57,
+        "rx": 30,
+        "timeouts": 27,
+        "error_frames": 0
+      },
+      "scan": {
+        "1": {
+          "addressed_id": 1,
+          "online": true,
+          "replies": [
+            1,
+            1,
+            1
+          ],
+          "reply_rate": "3/3",
+          "self_reported_id": 1,
+          "id_consistent": true,
+          "status": {
+            "mode_raw": 1,
+            "mode": "IDLE",
+            "mode_safe": true,
+            "error": {
+              "raw": 0,
+              "hex": "0x0000",
+              "bits": [],
+              "unknown_mask": null,
+              "critical": false
+            },
+            "watchdog_timeout": 1000
+          }
+        },
+        "2": {
+          "addressed_id": 2,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "3": {
+          "addressed_id": 3,
+          "online": true,
+          "replies": [
+            3,
+            3,
+            3
+          ],
+          "reply_rate": "3/3",
+          "self_reported_id": 3,
+          "id_consistent": true,
+          "status": {
+            "mode_raw": 1,
+            "mode": "IDLE",
+            "mode_safe": true,
+            "error": {
+              "raw": 0,
+              "hex": "0x0000",
+              "bits": [],
+              "unknown_mask": null,
+              "critical": false
+            },
+            "watchdog_timeout": 1000
+          }
+        },
+        "4": {
+          "addressed_id": 4,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "5": {
+          "addressed_id": 5,
+          "online": true,
+          "replies": [
+            5,
+            5,
+            5
+          ],
+          "reply_rate": "3/3",
+          "self_reported_id": 5,
+          "id_consistent": true,
+          "status": {
+            "mode_raw": 0,
+            "mode": "DISABLED",
+            "mode_safe": true,
+            "error": {
+              "raw": 0,
+              "hex": "0x0000",
+              "bits": [],
+              "unknown_mask": null,
+              "critical": false
+            },
+            "watchdog_timeout": 1000
+          }
+        },
+        "6": {
+          "addressed_id": 6,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "7": {
+          "addressed_id": 7,
+          "online": true,
+          "replies": [
+            7,
+            7,
+            7
+          ],
+          "reply_rate": "3/3",
+          "self_reported_id": 7,
+          "id_consistent": true,
+          "status": {
+            "mode_raw": 1,
+            "mode": "IDLE",
+            "mode_safe": true,
+            "error": {
+              "raw": 0,
+              "hex": "0x0000",
+              "bits": [],
+              "unknown_mask": null,
+              "critical": false
+            },
+            "watchdog_timeout": 1000
+          }
+        },
+        "8": {
+          "addressed_id": 8,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "9": {
+          "addressed_id": 9,
+          "online": true,
+          "replies": [
+            9,
+            9,
+            9
+          ],
+          "reply_rate": "3/3",
+          "self_reported_id": 9,
+          "id_consistent": true,
+          "status": {
+            "mode_raw": 1,
+            "mode": "IDLE",
+            "mode_safe": true,
+            "error": {
+              "raw": 0,
+              "hex": "0x0000",
+              "bits": [],
+              "unknown_mask": null,
+              "critical": false
+            },
+            "watchdog_timeout": 1000
+          }
+        },
+        "10": {
+          "addressed_id": 10,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "11": {
+          "addressed_id": 11,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "12": {
+          "addressed_id": 12,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "13": {
+          "addressed_id": 13,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "14": {
+          "addressed_id": 14,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        }
+      },
+      "online": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "expected": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "missing": [],
+      "unexpected": []
+    },
+    "can1": {
+      "limb": "right arm",
+      "usb_port": "3-4.2:1.0",
+      "link_before": {
+        "state": "ERROR-ACTIVE",
+        "bitrate": 1000000,
+        "restarts": 0,
+        "bus_error": 0,
+        "arbitration_lost": 0,
+        "error_warning": 0,
+        "error_passive": 0,
+        "bus_off": 0,
+        "rx_packets": 9,
+        "rx_errors": 0,
+        "tx_packets": 5,
+        "tx_errors": 0
+      },
+      "link_after": {
+        "state": "ERROR-ACTIVE",
+        "bitrate": 1000000,
+        "restarts": 0,
+        "bus_error": 0,
+        "arbitration_lost": 0,
+        "error_warning": 0,
+        "error_passive": 0,
+        "bus_off": 0,
+        "rx_packets": 96,
+        "rx_errors": 0,
+        "tx_packets": 62,
+        "tx_errors": 0
+      },
+      "error_delta": {
+        "restarts": 0,
+        "bus_error": 0,
+        "arbitration_lost": 0,
+        "error_warning": 0,
+        "error_passive": 0,
+        "bus_off": 0,
+        "rx_errors": 0,
+        "tx_errors": 0
+      },
+      "traffic": {
+        "tx": 57,
+        "rx": 30,
+        "timeouts": 27,
+        "error_frames": 0
+      },
+      "scan": {
+        "1": {
+          "addressed_id": 1,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "2": {
+          "addressed_id": 2,
+          "online": true,
+          "replies": [
+            2,
+            2,
+            2
+          ],
+          "reply_rate": "3/3",
+          "self_reported_id": 2,
+          "id_consistent": true,
+          "status": {
+            "mode_raw": 1,
+            "mode": "IDLE",
+            "mode_safe": true,
+            "error": {
+              "raw": 0,
+              "hex": "0x0000",
+              "bits": [],
+              "unknown_mask": null,
+              "critical": false
+            },
+            "watchdog_timeout": 1000
+          }
+        },
+        "3": {
+          "addressed_id": 3,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "4": {
+          "addressed_id": 4,
+          "online": true,
+          "replies": [
+            4,
+            4,
+            4
+          ],
+          "reply_rate": "3/3",
+          "self_reported_id": 4,
+          "id_consistent": true,
+          "status": {
+            "mode_raw": 1,
+            "mode": "IDLE",
+            "mode_safe": true,
+            "error": {
+              "raw": 0,
+              "hex": "0x0000",
+              "bits": [],
+              "unknown_mask": null,
+              "critical": false
+            },
+            "watchdog_timeout": 1000
+          }
+        },
+        "5": {
+          "addressed_id": 5,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "6": {
+          "addressed_id": 6,
+          "online": true,
+          "replies": [
+            6,
+            6,
+            6
+          ],
+          "reply_rate": "3/3",
+          "self_reported_id": 6,
+          "id_consistent": true,
+          "status": {
+            "mode_raw": 1,
+            "mode": "IDLE",
+            "mode_safe": true,
+            "error": {
+              "raw": 0,
+              "hex": "0x0000",
+              "bits": [],
+              "unknown_mask": null,
+              "critical": false
+            },
+            "watchdog_timeout": 1000
+          }
+        },
+        "7": {
+          "addressed_id": 7,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "8": {
+          "addressed_id": 8,
+          "online": true,
+          "replies": [
+            8,
+            8,
+            8
+          ],
+          "reply_rate": "3/3",
+          "self_reported_id": 8,
+          "id_consistent": true,
+          "status": {
+            "mode_raw": 1,
+            "mode": "IDLE",
+            "mode_safe": true,
+            "error": {
+              "raw": 0,
+              "hex": "0x0000",
+              "bits": [],
+              "unknown_mask": null,
+              "critical": false
+            },
+            "watchdog_timeout": 1000
+          }
+        },
+        "9": {
+          "addressed_id": 9,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "10": {
+          "addressed_id": 10,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "11": {
+          "addressed_id": 11,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "12": {
+          "addressed_id": 12,
+          "online": true,
+          "replies": [
+            12,
+            12,
+            12
+          ],
+          "reply_rate": "3/3",
+          "self_reported_id": 12,
+          "id_consistent": true,
+          "status": {
+            "mode_raw": 1,
+            "mode": "IDLE",
+            "mode_safe": true,
+            "error": {
+              "raw": 0,
+              "hex": "0x0000",
+              "bits": [],
+              "unknown_mask": null,
+              "critical": false
+            },
+            "watchdog_timeout": 1000
+          }
+        },
+        "13": {
+          "addressed_id": 13,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "14": {
+          "addressed_id": 14,
+          "online": false,
+          "replies": [
+            null,
+            null,
+            null
+          ],
+          "reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        }
+      },
+      "online": [
+        2,
+        4,
+        6,
+        8,
+        12
+      ],
+      "expected": [
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "missing": [
+        10
+      ],
+      "unexpected": [
+        12
+      ]
+    }
+  }
+}

@@ -1,0 +1,412 @@
+[
+  {
+    "bus": "can0",
+    "id": 1,
+    "joint": "left_shoulder_pitch_joint",
+    "status": {
+      "mode_raw": 1,
+      "mode": "IDLE",
+      "mode_safe": true,
+      "error": {
+        "raw": 0,
+        "hex": "0x0000",
+        "bits": [],
+        "unknown_mask": null,
+        "critical": false
+      },
+      "watchdog_timeout": 1000,
+      "online": true
+    },
+    "analysis": {
+      "samples": 5715,
+      "duration_s": 10.002,
+      "sample_rate_hz": 571.4,
+      "read_misses": 0,
+      "min": 1214,
+      "max": 1215,
+      "mean": 1214.95,
+      "stdev": 0.213,
+      "p2p_counts": 1,
+      "p2p_deg_rotor": 0.088,
+      "repeated_samples": 5223,
+      "repeated_frac": 0.914,
+      "nonfinite": 0,
+      "jumps_gt_200": 0,
+      "largest_step": 1,
+      "i2c_out_of_range": 0,
+      "i2c_vs_posraw_mismatch": 0,
+      "median_dt_ms": 1.73
+    },
+    "verdict": "PASS",
+    "why": "quiet: p2p 1 counts, stdev 0.213"
+  },
+  {
+    "bus": "can0",
+    "id": 3,
+    "joint": "left_shoulder_roll_joint",
+    "status": {
+      "mode_raw": 1,
+      "mode": "IDLE",
+      "mode_safe": true,
+      "error": {
+        "raw": 0,
+        "hex": "0x0000",
+        "bits": [],
+        "unknown_mask": null,
+        "critical": false
+      },
+      "watchdog_timeout": 1000,
+      "online": true
+    },
+    "analysis": {
+      "samples": 5655,
+      "duration_s": 10.0,
+      "sample_rate_hz": 565.5,
+      "read_misses": 0,
+      "min": 1120,
+      "max": 1120,
+      "mean": 1120.0,
+      "stdev": 0.0,
+      "p2p_counts": 0,
+      "p2p_deg_rotor": 0.0,
+      "repeated_samples": 5654,
+      "repeated_frac": 1.0,
+      "nonfinite": 0,
+      "jumps_gt_200": 0,
+      "largest_step": 0,
+      "i2c_out_of_range": 0,
+      "i2c_vs_posraw_mismatch": 0,
+      "median_dt_ms": 1.8
+    },
+    "verdict": "PASS-FROZEN",
+    "why": "perfectly constant; cannot distinguish a quiet encoder from a frozen one without the manual-rotation test"
+  },
+  {
+    "bus": "can0",
+    "id": 5,
+    "joint": "left_shoulder_yaw_joint",
+    "status": {
+      "mode_raw": 0,
+      "mode": "DISABLED",
+      "mode_safe": true,
+      "error": {
+        "raw": 0,
+        "hex": "0x0000",
+        "bits": [],
+        "unknown_mask": null,
+        "critical": false
+      },
+      "watchdog_timeout": 1000,
+      "online": true
+    },
+    "analysis": {
+      "samples": 5961,
+      "duration_s": 10.0,
+      "sample_rate_hz": 596.1,
+      "read_misses": 0,
+      "min": 0,
+      "max": 0,
+      "mean": 0.0,
+      "stdev": 0.0,
+      "p2p_counts": 0,
+      "p2p_deg_rotor": 0.0,
+      "repeated_samples": 5960,
+      "repeated_frac": 1.0,
+      "nonfinite": 0,
+      "jumps_gt_200": 0,
+      "largest_step": 0,
+      "i2c_out_of_range": 0,
+      "i2c_vs_posraw_mismatch": 0,
+      "median_dt_ms": 1.6
+    },
+    "verdict": "PASS-FROZEN",
+    "why": "perfectly constant; cannot distinguish a quiet encoder from a frozen one without the manual-rotation test"
+  },
+  {
+    "bus": "can0",
+    "id": 7,
+    "joint": "left_elbow_joint",
+    "status": {
+      "mode_raw": 1,
+      "mode": "IDLE",
+      "mode_safe": true,
+      "error": {
+        "raw": 0,
+        "hex": "0x0000",
+        "bits": [],
+        "unknown_mask": null,
+        "critical": false
+      },
+      "watchdog_timeout": 1000,
+      "online": true
+    },
+    "analysis": {
+      "samples": 5763,
+      "duration_s": 10.0,
+      "sample_rate_hz": 576.3,
+      "read_misses": 0,
+      "min": 747,
+      "max": 749,
+      "mean": 748.0,
+      "stdev": 0.06,
+      "p2p_counts": 2,
+      "p2p_deg_rotor": 0.176,
+      "repeated_samples": 5720,
+      "repeated_frac": 0.993,
+      "nonfinite": 0,
+      "jumps_gt_200": 0,
+      "largest_step": 1,
+      "i2c_out_of_range": 0,
+      "i2c_vs_posraw_mismatch": 0,
+      "median_dt_ms": 1.72
+    },
+    "verdict": "PASS",
+    "why": "quiet: p2p 2 counts, stdev 0.06"
+  },
+  {
+    "bus": "can0",
+    "id": 9,
+    "joint": "left_wrist_yaw_joint",
+    "status": {
+      "mode_raw": 1,
+      "mode": "IDLE",
+      "mode_safe": true,
+      "error": {
+        "raw": 0,
+        "hex": "0x0000",
+        "bits": [],
+        "unknown_mask": null,
+        "critical": false
+      },
+      "watchdog_timeout": 1000,
+      "online": true
+    },
+    "analysis": {
+      "samples": 5718,
+      "duration_s": 10.0,
+      "sample_rate_hz": 571.8,
+      "read_misses": 0,
+      "min": 3970,
+      "max": 3971,
+      "mean": 3970.71,
+      "stdev": 0.455,
+      "p2p_counts": 1,
+      "p2p_deg_rotor": 0.088,
+      "repeated_samples": 3547,
+      "repeated_frac": 0.62,
+      "nonfinite": 0,
+      "jumps_gt_200": 0,
+      "largest_step": 1,
+      "i2c_out_of_range": 0,
+      "i2c_vs_posraw_mismatch": 0,
+      "median_dt_ms": 1.67
+    },
+    "verdict": "PASS",
+    "why": "quiet: p2p 1 counts, stdev 0.455"
+  },
+  {
+    "bus": "can1",
+    "id": 2,
+    "joint": "right_shoulder_pitch_joint",
+    "status": {
+      "mode_raw": 1,
+      "mode": "IDLE",
+      "mode_safe": true,
+      "error": {
+        "raw": 0,
+        "hex": "0x0000",
+        "bits": [],
+        "unknown_mask": null,
+        "critical": false
+      },
+      "watchdog_timeout": 1000,
+      "online": true
+    },
+    "analysis": {
+      "samples": 5738,
+      "duration_s": 10.001,
+      "sample_rate_hz": 573.8,
+      "read_misses": 0,
+      "min": 1071,
+      "max": 1072,
+      "mean": 1071.95,
+      "stdev": 0.218,
+      "p2p_counts": 1,
+      "p2p_deg_rotor": 0.088,
+      "repeated_samples": 5223,
+      "repeated_frac": 0.91,
+      "nonfinite": 0,
+      "jumps_gt_200": 0,
+      "largest_step": 1,
+      "i2c_out_of_range": 0,
+      "i2c_vs_posraw_mismatch": 0,
+      "median_dt_ms": 1.64
+    },
+    "verdict": "PASS",
+    "why": "quiet: p2p 1 counts, stdev 0.218"
+  },
+  {
+    "bus": "can1",
+    "id": 4,
+    "joint": "right_shoulder_roll_joint",
+    "status": {
+      "mode_raw": 1,
+      "mode": "IDLE",
+      "mode_safe": true,
+      "error": {
+        "raw": 0,
+        "hex": "0x0000",
+        "bits": [],
+        "unknown_mask": null,
+        "critical": false
+      },
+      "watchdog_timeout": 1000,
+      "online": true
+    },
+    "analysis": {
+      "samples": 5653,
+      "duration_s": 10.004,
+      "sample_rate_hz": 565.1,
+      "read_misses": 0,
+      "min": 1289,
+      "max": 1289,
+      "mean": 1289.0,
+      "stdev": 0.0,
+      "p2p_counts": 0,
+      "p2p_deg_rotor": 0.0,
+      "repeated_samples": 5652,
+      "repeated_frac": 1.0,
+      "nonfinite": 0,
+      "jumps_gt_200": 0,
+      "largest_step": 0,
+      "i2c_out_of_range": 0,
+      "i2c_vs_posraw_mismatch": 0,
+      "median_dt_ms": 1.64
+    },
+    "verdict": "PASS-FROZEN",
+    "why": "perfectly constant; cannot distinguish a quiet encoder from a frozen one without the manual-rotation test"
+  },
+  {
+    "bus": "can1",
+    "id": 6,
+    "joint": "right_shoulder_yaw_joint",
+    "status": {
+      "mode_raw": 1,
+      "mode": "IDLE",
+      "mode_safe": true,
+      "error": {
+        "raw": 0,
+        "hex": "0x0000",
+        "bits": [],
+        "unknown_mask": null,
+        "critical": false
+      },
+      "watchdog_timeout": 1000,
+      "online": true
+    },
+    "analysis": {
+      "samples": 5672,
+      "duration_s": 10.001,
+      "sample_rate_hz": 567.2,
+      "read_misses": 0,
+      "min": 1504,
+      "max": 1504,
+      "mean": 1504.0,
+      "stdev": 0.0,
+      "p2p_counts": 0,
+      "p2p_deg_rotor": 0.0,
+      "repeated_samples": 5671,
+      "repeated_frac": 1.0,
+      "nonfinite": 0,
+      "jumps_gt_200": 0,
+      "largest_step": 0,
+      "i2c_out_of_range": 0,
+      "i2c_vs_posraw_mismatch": 0,
+      "median_dt_ms": 1.65
+    },
+    "verdict": "PASS-FROZEN",
+    "why": "perfectly constant; cannot distinguish a quiet encoder from a frozen one without the manual-rotation test"
+  },
+  {
+    "bus": "can1",
+    "id": 8,
+    "joint": "right_elbow_joint",
+    "status": {
+      "mode_raw": 1,
+      "mode": "IDLE",
+      "mode_safe": true,
+      "error": {
+        "raw": 0,
+        "hex": "0x0000",
+        "bits": [],
+        "unknown_mask": null,
+        "critical": false
+      },
+      "watchdog_timeout": 1000,
+      "online": true
+    },
+    "analysis": {
+      "samples": 5880,
+      "duration_s": 10.002,
+      "sample_rate_hz": 587.9,
+      "read_misses": 0,
+      "min": 450,
+      "max": 451,
+      "mean": 450.97,
+      "stdev": 0.183,
+      "p2p_counts": 1,
+      "p2p_deg_rotor": 0.088,
+      "repeated_samples": 5519,
+      "repeated_frac": 0.939,
+      "nonfinite": 0,
+      "jumps_gt_200": 0,
+      "largest_step": 1,
+      "i2c_out_of_range": 0,
+      "i2c_vs_posraw_mismatch": 0,
+      "median_dt_ms": 1.63
+    },
+    "verdict": "PASS",
+    "why": "quiet: p2p 1 counts, stdev 0.183"
+  },
+  {
+    "bus": "can1",
+    "id": 12,
+    "joint": "UNMAPPED",
+    "status": {
+      "mode_raw": 1,
+      "mode": "IDLE",
+      "mode_safe": true,
+      "error": {
+        "raw": 0,
+        "hex": "0x0000",
+        "bits": [],
+        "unknown_mask": null,
+        "critical": false
+      },
+      "watchdog_timeout": 1000,
+      "online": true
+    },
+    "analysis": {
+      "samples": 5915,
+      "duration_s": 10.0,
+      "sample_rate_hz": 591.5,
+      "read_misses": 0,
+      "min": 2465,
+      "max": 2465,
+      "mean": 2465.0,
+      "stdev": 0.0,
+      "p2p_counts": 0,
+      "p2p_deg_rotor": 0.0,
+      "repeated_samples": 5914,
+      "repeated_frac": 1.0,
+      "nonfinite": 0,
+      "jumps_gt_200": 0,
+      "largest_step": 0,
+      "i2c_out_of_range": 0,
+      "i2c_vs_posraw_mismatch": 0,
+      "median_dt_ms": 1.63
+    },
+    "verdict": "PASS-FROZEN",
+    "why": "perfectly constant; cannot distinguish a quiet encoder from a frozen one without the manual-rotation test"
+  }
+]

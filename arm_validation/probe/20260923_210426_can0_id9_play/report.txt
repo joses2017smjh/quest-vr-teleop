@@ -1,0 +1,29 @@
+Transport: 11181 reads, 0 retries, 0 timeouts, 0.66 ms/read; 0 of 433 steps failed a check and were left out
+Rotor vs field slope +0.62 (ideal +1.00), following on 55% of steps, stalled on 26%, pole slips 0.
+   forward: rotor moved +0.79x the field
+  backward: rotor moved +0.38x the field
+  rotor span 0.45 rev for a field span of 0.43 rev
+Repeat passes at the same field angle (72 angles): encoder spread median 1.25, worst 1.57 electrical turns (backward at +3.50). More than the 0.25 a rotor held by a field allows when friction is small: either the encoder slips on the rotor, or friction is close to the field's torque (compare the forward and backward tracking stretches).
+  segment  forward: field  +5.00 e-turns, encoder  +4.74  (+0.95x)
+  segment backward: field  -2.00 e-turns, encoder  -1.06  (+0.53x)
+  segment  forward: field  +2.00 e-turns, encoder  +1.42  (+0.71x)
+  segment backward: field  -2.00 e-turns, encoder  -1.07  (+0.53x)
+  segment  forward: field  +2.00 e-turns, encoder  +1.29  (+0.64x)
+  segment backward: field  -2.00 e-turns, encoder  -1.02  (+0.51x)
+  segment  forward: field  +3.00 e-turns, encoder  +2.06  (+0.69x)
+  segment backward: field  -6.00 e-turns, encoder  -1.45  (+0.24x)
+  STALL backward: 68 steps (1360 deg e) at rotor +132.7 deg from start (joint +8.84 deg), raw 2794
+  STALL backward: 12 steps (240 deg e) at rotor +110.9 deg from start (joint +7.39 deg), raw 2506
+  STALL backward: 11 steps (220 deg e) at rotor +103.7 deg from start (joint +6.91 deg), raw 2416
+  STALL backward: 9 steps (180 deg e) at rotor +94.8 deg from start (joint +6.32 deg), raw 2311
+  STALL backward: 2 steps (40 deg e) at rotor +138.4 deg from start (joint +9.23 deg), raw 2806
+PHASE ORDER +1 matches the encoder: when it moves, it moves +0.86x the field.
+STICKS: the encoder stood still on 26% of steps while the field kept turning (the known-good wrist: 0%).
+  forward tracking stretches: 8, rotor-minus-field +29 deg e, spread 73 deg (fixed magnet: all alike)
+Phase currents (amplitude, phase error, DC offset):
+  phase a: 1.616 A, -1.3 deg, +0.006 A
+  phase b: 1.666 A, -0.2 deg, +0.000 A
+  phase c: 1.607 A, +1.4 deg, +0.003 A
+  balance min/max 0.96 (1.00 ideal); Kirchhoff sum mean +0.009 A
+  V/I 1.166 ohm, varies 2.4% with field angle, highest along phase c (ESC output 3)
+Encoder noise at rest: median 0, max 1 counts; unsettled steps 0

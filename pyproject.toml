@@ -26,6 +26,7 @@ dependencies = [
   "berkeley_humanoid_lite",
   "berkeley_humanoid_lite_assets",
   "berkeley_humanoid_lite_lowlevel",
+  "python-can>=4.6.1",
 ]
 
 [build-system]

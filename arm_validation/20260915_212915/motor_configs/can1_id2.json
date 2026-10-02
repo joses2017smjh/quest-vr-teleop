@@ -1,0 +1,142 @@
+{
+  "bus": "can1",
+  "limb": "right arm",
+  "id": 2,
+  "joint": "right_shoulder_pitch_joint",
+  "values": {
+    "device_id": 2,
+    "firmware_version": "0x20250226",
+    "watchdog_timeout": 1000,
+    "fast_frame_frequency": 0,
+    "mode": 1,
+    "error": 0,
+    "gear_ratio": 1.0,
+    "position_kp": 1.0,
+    "position_ki": 0.0,
+    "velocity_kp": 0.10000000149011612,
+    "velocity_ki": 0.0,
+    "torque_limit": 1.0,
+    "velocity_limit": 20.0,
+    "position_limit_lower": -Infinity,
+    "position_limit_upper": Infinity,
+    "position_offset": 0.0,
+    "torque_filter_alpha": 0.14536400139331818,
+    "i_limit": 20.0,
+    "i_kp": 0.1909564733505249,
+    "i_ki": 4538.505859375,
+    "undervoltage_threshold": 0.0,
+    "overvoltage_threshold": 0.0,
+    "bus_voltage_filter_alpha": 0.26959729194641113,
+    "pole_pairs": 14,
+    "torque_constant": 0.0895799994468689,
+    "phase_order": 1,
+    "max_calibration_current": 5.0,
+    "encoder_cpr": 4096,
+    "encoder_position_offset": 0.0,
+    "encoder_velocity_filter_alpha": 0.7153904438018799,
+    "encoder_flux_offset": 43.819580078125,
+    "bus_voltage_measured": 22.643434524536133,
+    "update_counter": 2,
+    "encoder_position_raw": 2093,
+    "encoder_n_rotations": 2,
+    "encoder_position": 15.776992797851562,
+    "encoder_velocity": 1.9881710698091737e-26,
+    "position_measured": 15.776992797851562,
+    "velocity_measured": 1.5984423610359314e-33,
+    "encoder_i2c_buffer_raw": "082d0000",
+    "encoder_i2c_reading": 2093
+  },
+  "expected": {
+    "device_id": 2,
+    "firmware_version": "0x20250226",
+    "watchdog_timeout": 1000,
+    "fast_frame_frequency": 0,
+    "gear_ratio": -15.0,
+    "position_kp": 50.0,
+    "position_ki": 0.0,
+    "velocity_kp": 2.0,
+    "velocity_ki": 0.0,
+    "torque_limit": 2.0,
+    "velocity_limit": 20.0,
+    "position_limit_lower": -Infinity,
+    "position_limit_upper": Infinity,
+    "position_offset": 0.0,
+    "torque_filter_alpha": 0.2695973217487335,
+    "i_limit": 20.0,
+    "i_kp": 0.10210175812244415,
+    "i_ki": 5803.0771484375,
+    "undervoltage_threshold": 0.0,
+    "overvoltage_threshold": 0.0,
+    "bus_voltage_filter_alpha": 0.26959729194641113,
+    "pole_pairs": 14,
+    "torque_constant": 0.09189999848604202,
+    "phase_order": -1,
+    "max_calibration_current": 5.0,
+    "encoder_cpr": 4096,
+    "encoder_position_offset": 0.0,
+    "encoder_velocity_filter_alpha": 0.7153904438018799,
+    "encoder_flux_offset": 75.3983383178711
+  },
+  "mismatches": [
+    {
+      "param": "gear_ratio",
+      "actual": 1.0,
+      "expected": -15.0,
+      "is_calibration": false
+    },
+    {
+      "param": "position_kp",
+      "actual": 1.0,
+      "expected": 50.0,
+      "is_calibration": false
+    },
+    {
+      "param": "velocity_kp",
+      "actual": 0.10000000149011612,
+      "expected": 2.0,
+      "is_calibration": false
+    },
+    {
+      "param": "torque_limit",
+      "actual": 1.0,
+      "expected": 2.0,
+      "is_calibration": false
+    },
+    {
+      "param": "torque_filter_alpha",
+      "actual": 0.14536400139331818,
+      "expected": 0.2695973217487335,
+      "is_calibration": false
+    },
+    {
+      "param": "i_kp",
+      "actual": 0.1909564733505249,
+      "expected": 0.10210175812244415,
+      "is_calibration": false
+    },
+    {
+      "param": "i_ki",
+      "actual": 4538.505859375,
+      "expected": 5803.0771484375,
+      "is_calibration": false
+    },
+    {
+      "param": "torque_constant",
+      "actual": 0.0895799994468689,
+      "expected": 0.09189999848604202,
+      "is_calibration": false
+    },
+    {
+      "param": "phase_order",
+      "actual": 1,
+      "expected": -1,
+      "is_calibration": false
+    },
+    {
+      "param": "encoder_flux_offset",
+      "actual": 43.819580078125,
+      "expected": 75.3983383178711,
+      "is_calibration": true
+    }
+  ]
+}

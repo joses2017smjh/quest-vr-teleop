@@ -1,0 +1,28 @@
+{
+  "claws": {
+    "D3": {
+      "side": "left",
+      "role": "left_claw",
+      "open_us": 1000,
+      "closed_us": 1640
+    },
+    "D7": {
+      "side": "right",
+      "role": "right_claw",
+      "open_us": 1000,
+      "closed_us": 1670
+    },
+    "D9": {
+      "role": "camera_pan",
+      "center_us": 1500
+    },
+    "D5": {
+      "role": "camera_tilt",
+      "level_us": 1500,
+      "up_us": 1200,
+      "down_us": 1850
+    }
+  },
+  "saved": "2026-09-30T03:06:33",
+  "note": "Pulse widths (us) for scripts/arduino/claw_controller.ino; written by the headset setup (triple Y -> B) or tools/claw_jog.py."
+}

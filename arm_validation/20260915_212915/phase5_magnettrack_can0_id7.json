@@ -1,0 +1,47 @@
+{
+  "bus": "can0",
+  "id": 7,
+  "joint": "left_elbow_joint",
+  "status": {
+    "mode_raw": 1,
+    "mode": "IDLE",
+    "mode_safe": true,
+    "error": {
+      "raw": 0,
+      "hex": "0x0000",
+      "bits": [],
+      "unknown_mask": null,
+      "critical": false
+    },
+    "watchdog_timeout": 1000,
+    "online": true
+  },
+  "positions": [
+    {
+      "step": 1,
+      "n": 2363,
+      "centre_counts": 743.7,
+      "centre_deg": 65.4,
+      "concentration_R": 1.0,
+      "median_abs_dev_counts": 2.3
+    },
+    {
+      "step": 2,
+      "n": 2232,
+      "centre_counts": 761.6,
+      "centre_deg": 66.9,
+      "concentration_R": 0.9996,
+      "median_abs_dev_counts": 7.6
+    },
+    {
+      "step": 3,
+      "n": 2340,
+      "centre_counts": 752.8,
+      "centre_deg": 66.2,
+      "concentration_R": 0.9997,
+      "median_abs_dev_counts": 5.8
+    }
+  ],
+  "spread_counts": 17.899999999999977,
+  "verdict": "DOES NOT TRACK -- the reading is independent of joint position. Consistent with no magnet on the shaft, a magnet not mechanically coupled, or a sensor not mounted over the shaft."
+}

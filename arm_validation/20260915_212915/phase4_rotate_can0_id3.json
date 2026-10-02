@@ -1,0 +1,47 @@
+{
+  "bus": "can0",
+  "id": 3,
+  "joint": "left_shoulder_roll_joint",
+  "status": {
+    "mode_raw": 1,
+    "mode": "IDLE",
+    "mode_safe": true,
+    "error": {
+      "raw": 0,
+      "hex": "0x0000",
+      "bits": [],
+      "unknown_mask": null,
+      "critical": false
+    },
+    "watchdog_timeout": 1000,
+    "online": true
+  },
+  "analysis": {
+    "samples": 11610,
+    "duration_s": 20.001,
+    "sample_rate_hz": 580.5,
+    "read_misses": 0,
+    "min": 94,
+    "max": 851,
+    "mean": 444.3,
+    "stdev": 78.373,
+    "p2p_counts": 757,
+    "p2p_deg_rotor": 66.533,
+    "repeated_samples": 47,
+    "repeated_frac": 0.004,
+    "nonfinite": 0,
+    "jumps_gt_200": 753,
+    "largest_step": 514,
+    "i2c_out_of_range": 0,
+    "i2c_vs_posraw_mismatch": 10777,
+    "median_dt_ms": 1.64,
+    "travel_counts": 757,
+    "travel_deg_rotor": 66.53,
+    "start": 467,
+    "end": 367,
+    "return_error_counts": 100,
+    "n_positive_steps": 5860,
+    "n_negative_steps": 5702,
+    "direction_reversed": true
+  }
+}

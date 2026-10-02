@@ -1,3 +1,5 @@
+> **This fork:** Quest 2 VR teleop for the arms, live tuning, voice + Claude in the headset, robot vision. See [docs/VR_TELEOP.md](docs/VR_TELEOP.md).
+
 # Berkeley Humanoid Lite
 
 [![Python](https://img.shields.io/badge/python-3.10-blue.svg)](https://docs.python.org/3/whatsnew/3.10.html)

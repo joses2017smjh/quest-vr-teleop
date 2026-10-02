@@ -1,0 +1,19 @@
+Rotor vs field slope +0.37 (ideal +1.00), following on 44% of steps, stalled on 49%, pole slips 0.
+   forward: rotor moved +0.31x the field
+  backward: rotor moved +0.62x the field
+  rotor span 0.62 rev for a field span of 1.00 rev
+  STALL backward: 86 steps (1720 deg e) at rotor +35.6 deg from start (joint +2.37 deg), raw 2414
+  STALL forward: 80 steps (1600 deg e) at rotor -125.5 deg from start (joint -8.37 deg), raw 556
+  STALL forward: 77 steps (1540 deg e) at rotor +0.2 deg from start (joint +0.01 deg), raw 1998
+PHASE ORDER +1 matches the encoder: when it moves, it moves +0.98x the field.
+STICKS: the encoder stood still on 49% of steps while the field kept turning (the known-good wrist: 0%).
+  forward tracking stretches: 3, rotor-minus-field +65 deg e, spread 64 deg (fixed magnet: all alike)
+  backward tracking stretches: 6, rotor-minus-field +124 deg e, spread 16 deg (fixed magnet: all alike)
+  flux from the tracking stretches +1.66 rad; stored +36.41 rad is -169 deg e from it: the stored value pushes the WRONG WAY
+Phase currents (amplitude, phase error, DC offset):
+  phase a: 1.562 A, -1.3 deg, -0.017 A
+  phase b: 1.620 A, -0.3 deg, -0.015 A
+  phase c: 1.559 A, +1.3 deg, -0.016 A
+  balance min/max 0.96 (1.00 ideal); Kirchhoff sum mean -0.048 A
+  V/I 1.171 ohm, varies 2.6% with field angle, highest along phase a (ESC output 1)
+Encoder noise at rest: median 0, max 1 counts; unsettled steps 0

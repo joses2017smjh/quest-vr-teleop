@@ -1,0 +1,541 @@
+{
+  "version": 1,
+  "saved": "2026-10-01T12:04:27",
+  "note": "Written by the headset power calibration (scripts/teleop/arm_calibration.py).",
+  "motion_scale": 0.61,
+  "swap_hands": true,
+  "joints": {
+    "left_shoulder_pitch": {
+      "kp": 30.0,
+      "kd": 2.0,
+      "floor": 2.0,
+      "headroom": 1.75,
+      "max_torque": 5.0,
+      "gravity_scale": 0.947,
+      "axis_flip": false,
+      "calibrated": "2026-09-24T11:13:30",
+      "result": {
+        "time": "2026-09-24T11:13:30",
+        "levels_tried": [
+          3.5
+        ],
+        "attempts": [
+          {
+            "level": 3.5,
+            "pass": true,
+            "why": "",
+            "progress": 0.968,
+            "max_err": 0.046,
+            "top_err": 0.038,
+            "peak_tau": 3.542,
+            "saturated_frac": 0.241,
+            "saturated": true,
+            "back_ok": true
+          }
+        ],
+        "model_need_nm": 2.58,
+        "fit": {
+          "raw_scale": 0.947,
+          "friction": 0.551,
+          "bias": 0.122,
+          "r2": 0.912,
+          "n": 319,
+          "scale": 0.947
+        },
+        "flipped": false,
+        "verdict": "OK - peak 3.5 Nm, max set 5.00 Nm, gravity x0.95",
+        "visual_check": true,
+        "home_rad": 0.0,
+        "probe_abort": null,
+        "free_other_way": null,
+        "arc_deg": -68.8,
+        "cap": 6.0,
+        "max_torque": 5.0,
+        "gravity_scale": 0.947,
+        "headroom": 1.75
+      },
+      "cal_cap": 6.0,
+      "cal_arc": -1.2,
+      "range_lower": null,
+      "range_upper": null
+    },
+    "left_shoulder_roll": {
+      "kp": 30.0,
+      "kd": 2.0,
+      "floor": 2.0,
+      "headroom": 1.75,
+      "max_torque": 4.75,
+      "gravity_scale": 1.049,
+      "axis_flip": true,
+      "calibrated": "2026-09-24T11:13:53",
+      "result": {
+        "time": "2026-09-24T11:13:53",
+        "levels_tried": [
+          4.5
+        ],
+        "attempts": [
+          {
+            "level": 4.5,
+            "pass": true,
+            "why": "",
+            "progress": 0.994,
+            "max_err": 0.032,
+            "top_err": 0.006,
+            "peak_tau": 3.405,
+            "saturated_frac": 0.0,
+            "saturated": false,
+            "back_ok": true
+          }
+        ],
+        "model_need_nm": 3.1,
+        "fit": {
+          "raw_scale": 1.049,
+          "friction": 0.52,
+          "bias": -0.79,
+          "r2": 0.868,
+          "n": 264,
+          "scale": 1.049
+        },
+        "flipped": true,
+        "verdict": "OK - peak 3.4 Nm, max set 4.75 Nm, gravity x1.05",
+        "visual_check": true,
+        "home_rad": 0.0,
+        "probe_abort": null,
+        "free_other_way": null,
+        "arc_deg": 57.3,
+        "cap": 6.0,
+        "max_torque": 4.75,
+        "gravity_scale": 1.049,
+        "headroom": 1.75
+      },
+      "cal_cap": 6.0,
+      "cal_arc": 1.0,
+      "range_lower": null,
+      "range_upper": null
+    },
+    "left_shoulder_yaw": {
+      "kp": 30.0,
+      "kd": 2.0,
+      "floor": 1.5,
+      "headroom": 1.5,
+      "max_torque": 1.5,
+      "gravity_scale": 1.0,
+      "axis_flip": true,
+      "calibrated": "2026-09-24T10:19:26",
+      "result": {
+        "time": "2026-09-24T10:19:26",
+        "levels_tried": [
+          1.5
+        ],
+        "attempts": [
+          {
+            "level": 1.5,
+            "pass": true,
+            "why": "",
+            "progress": 0.986,
+            "max_err": 0.038,
+            "top_err": 0.007,
+            "peak_tau": 0.815,
+            "saturated_frac": 0.0,
+            "saturated": false,
+            "back_ok": true
+          }
+        ],
+        "model_need_nm": 0.19,
+        "fit": {
+          "scale": null,
+          "friction": 0.354,
+          "n": 144,
+          "note": "gravity range too small to fit"
+        },
+        "flipped": true,
+        "verdict": "OK - peak 0.8 Nm, max set 1.50 Nm",
+        "visual_check": true,
+        "home_rad": 0.0,
+        "probe_abort": null,
+        "free_other_way": null,
+        "arc_deg": -28.6,
+        "cap": 4.0,
+        "max_torque": 1.5,
+        "gravity_scale": 1.0,
+        "headroom": 1.5
+      },
+      "cal_cap": 4.0,
+      "cal_arc": -0.5,
+      "range_lower": null,
+      "range_upper": null
+    },
+    "left_elbow": {
+      "kp": 30.0,
+      "kd": 2.0,
+      "floor": 1.5,
+      "headroom": 1.5,
+      "max_torque": 2.5,
+      "gravity_scale": 0.949,
+      "axis_flip": false,
+      "calibrated": "2026-09-24T11:14:16",
+      "result": {
+        "time": "2026-09-24T11:14:16",
+        "levels_tried": [
+          1.5
+        ],
+        "attempts": [
+          {
+            "level": 1.5,
+            "pass": true,
+            "why": "",
+            "progress": 0.99,
+            "max_err": 0.043,
+            "top_err": 0.013,
+            "peak_tau": 1.517,
+            "saturated_frac": 0.003,
+            "saturated": false,
+            "back_ok": true
+          }
+        ],
+        "model_need_nm": 0.76,
+        "fit": {
+          "raw_scale": 0.949,
+          "friction": 0.479,
+          "bias": -0.148,
+          "r2": 0.774,
+          "n": 323,
+          "scale": 0.949
+        },
+        "flipped": false,
+        "verdict": "OK - peak 1.5 Nm, max set 2.50 Nm, gravity x0.95",
+        "visual_check": true,
+        "home_rad": -0.0,
+        "probe_abort": null,
+        "free_other_way": null,
+        "arc_deg": 68.8,
+        "cap": 5.5,
+        "max_torque": 2.5,
+        "gravity_scale": 0.949,
+        "headroom": 1.5
+      },
+      "cal_cap": 5.5,
+      "cal_arc": 1.2,
+      "range_lower": null,
+      "range_upper": null
+    },
+    "left_wrist_yaw": {
+      "kp": 30.0,
+      "kd": 2.0,
+      "floor": 1.0,
+      "headroom": 1.5,
+      "max_torque": 1.5,
+      "gravity_scale": 1.0,
+      "axis_flip": false,
+      "calibrated": "2026-09-24T11:10:55",
+      "result": {
+        "time": "2026-09-24T11:10:55",
+        "levels_tried": [
+          1.0
+        ],
+        "attempts": [
+          {
+            "level": 1.0,
+            "pass": true,
+            "why": "",
+            "progress": 0.977,
+            "max_err": 0.041,
+            "top_err": 0.009,
+            "peak_tau": 0.648,
+            "saturated_frac": 0.0,
+            "saturated": false,
+            "back_ok": true
+          }
+        ],
+        "model_need_nm": 0.01,
+        "fit": {
+          "scale": null,
+          "friction": 0.341,
+          "n": 110,
+          "note": "gravity range too small to fit"
+        },
+        "flipped": false,
+        "verdict": "OK - peak 0.6 Nm, max set 1.50 Nm",
+        "visual_check": true,
+        "home_rad": 0.0,
+        "probe_abort": null,
+        "free_other_way": null,
+        "arc_deg": -22.1,
+        "cap": 2.0,
+        "max_torque": 1.5,
+        "gravity_scale": 1.0,
+        "headroom": 1.5
+      },
+      "cal_cap": 2.0,
+      "cal_arc": -0.38633214960113405,
+      "range_lower": null,
+      "range_upper": null
+    },
+    "right_shoulder_pitch": {
+      "kp": 30.0,
+      "kd": 2.0,
+      "floor": 2.0,
+      "headroom": 1.75,
+      "max_torque": 5.0,
+      "gravity_scale": 0.944,
+      "axis_flip": true,
+      "calibrated": "2026-09-24T10:20:43",
+      "result": {
+        "time": "2026-09-24T10:20:43",
+        "levels_tried": [
+          4.0
+        ],
+        "attempts": [
+          {
+            "level": 4.0,
+            "pass": true,
+            "why": "",
+            "progress": 0.987,
+            "max_err": 0.042,
+            "top_err": 0.015,
+            "peak_tau": 3.606,
+            "saturated_frac": 0.0,
+            "saturated": false,
+            "back_ok": true
+          }
+        ],
+        "model_need_nm": 2.72,
+        "fit": {
+          "raw_scale": 0.944,
+          "friction": 0.6,
+          "bias": -0.27,
+          "r2": 0.887,
+          "n": 345,
+          "scale": 0.944
+        },
+        "flipped": true,
+        "verdict": "OK - peak 3.6 Nm, max set 5.00 Nm, gravity x0.94",
+        "visual_check": true,
+        "home_rad": 0.0,
+        "probe_abort": null,
+        "free_other_way": null,
+        "arc_deg": 68.8,
+        "cap": 6.0,
+        "max_torque": 5.0,
+        "gravity_scale": 0.944,
+        "headroom": 1.75
+      },
+      "cal_cap": 6.0,
+      "cal_arc": 1.2,
+      "range_lower": null,
+      "range_upper": null
+    },
+    "right_shoulder_roll": {
+      "kp": 30.0,
+      "kd": 2.0,
+      "floor": 2.0,
+      "headroom": 1.75,
+      "max_torque": 5.25,
+      "gravity_scale": 1.249,
+      "axis_flip": false,
+      "calibrated": "2026-09-24T10:21:08",
+      "result": {
+        "time": "2026-09-24T10:21:08",
+        "levels_tried": [
+          4.0
+        ],
+        "attempts": [
+          {
+            "level": 4.0,
+            "pass": true,
+            "why": "",
+            "progress": 0.99,
+            "max_err": 0.054,
+            "top_err": 0.01,
+            "peak_tau": 3.804,
+            "saturated_frac": 0.013,
+            "saturated": false,
+            "back_ok": true
+          }
+        ],
+        "model_need_nm": 2.75,
+        "fit": {
+          "raw_scale": 1.249,
+          "friction": 0.707,
+          "bias": 1.278,
+          "r2": 0.835,
+          "n": 288,
+          "scale": 1.249
+        },
+        "flipped": false,
+        "verdict": "OK - peak 3.8 Nm, max set 5.25 Nm, gravity x1.25",
+        "visual_check": true,
+        "home_rad": 0.0,
+        "probe_abort": null,
+        "free_other_way": null,
+        "arc_deg": -57.3,
+        "cap": 6.0,
+        "max_torque": 5.25,
+        "gravity_scale": 1.249,
+        "headroom": 1.75
+      },
+      "cal_cap": 6.0,
+      "cal_arc": -1.0,
+      "range_lower": null,
+      "range_upper": null
+    },
+    "right_shoulder_yaw": {
+      "kp": 30.0,
+      "kd": 2.0,
+      "floor": 1.5,
+      "headroom": 1.5,
+      "max_torque": 1.5,
+      "gravity_scale": 1.0,
+      "axis_flip": true,
+      "calibrated": "2026-09-24T10:21:54",
+      "result": {
+        "time": "2026-09-24T10:21:54",
+        "levels_tried": [
+          1.5
+        ],
+        "attempts": [
+          {
+            "level": 1.5,
+            "pass": true,
+            "why": "",
+            "progress": 0.991,
+            "max_err": 0.033,
+            "top_err": 0.005,
+            "peak_tau": 0.725,
+            "saturated_frac": 0.0,
+            "saturated": false,
+            "back_ok": true
+          }
+        ],
+        "model_need_nm": 0.19,
+        "fit": {
+          "scale": null,
+          "friction": 0.292,
+          "n": 144,
+          "note": "gravity range too small to fit"
+        },
+        "flipped": true,
+        "verdict": "OK - peak 0.7 Nm, max set 1.50 Nm",
+        "visual_check": true,
+        "home_rad": 0.0,
+        "probe_abort": null,
+        "free_other_way": null,
+        "arc_deg": 28.6,
+        "cap": 4.0,
+        "max_torque": 1.5,
+        "gravity_scale": 1.0,
+        "headroom": 1.5
+      },
+      "cal_cap": 4.0,
+      "cal_arc": 0.5,
+      "range_lower": null,
+      "range_upper": null
+    },
+    "right_elbow": {
+      "kp": 30.0,
+      "kd": 2.0,
+      "floor": 1.5,
+      "headroom": 1.75,
+      "max_torque": 2.5,
+      "gravity_scale": 0.891,
+      "axis_flip": true,
+      "calibrated": "2026-09-24T10:21:32",
+      "result": {
+        "time": "2026-09-24T10:21:32",
+        "levels_tried": [
+          1.5
+        ],
+        "attempts": [
+          {
+            "level": 1.5,
+            "pass": true,
+            "why": "",
+            "progress": 0.985,
+            "max_err": 0.045,
+            "top_err": 0.018,
+            "peak_tau": 1.495,
+            "saturated_frac": 0.038,
+            "saturated": false,
+            "back_ok": true
+          }
+        ],
+        "model_need_nm": 0.8,
+        "fit": {
+          "raw_scale": 0.891,
+          "friction": 0.577,
+          "bias": 0.11,
+          "r2": 0.85,
+          "n": 344,
+          "scale": 0.891
+        },
+        "flipped": true,
+        "verdict": "OK - peak 1.5 Nm, max set 2.50 Nm, gravity x0.89",
+        "visual_check": true,
+        "home_rad": 0.0,
+        "probe_abort": null,
+        "free_other_way": null,
+        "arc_deg": -68.8,
+        "cap": 4.0,
+        "max_torque": 2.5,
+        "gravity_scale": 0.891,
+        "headroom": 1.75
+      },
+      "cal_cap": 4.0,
+      "cal_arc": -1.2,
+      "range_lower": null,
+      "range_upper": null
+    },
+    "right_wrist_yaw": {
+      "kp": 30.0,
+      "kd": 2.0,
+      "floor": 1.0,
+      "headroom": 1.25,
+      "max_torque": 1.25,
+      "gravity_scale": 1.0,
+      "axis_flip": true,
+      "calibrated": "2026-09-24T10:22:12",
+      "result": {
+        "time": "2026-09-24T10:22:12",
+        "levels_tried": [
+          1.0
+        ],
+        "attempts": [
+          {
+            "level": 1.0,
+            "pass": true,
+            "why": "",
+            "progress": 0.976,
+            "max_err": 0.038,
+            "top_err": 0.012,
+            "peak_tau": 0.593,
+            "saturated_frac": 0.0,
+            "saturated": false,
+            "back_ok": true
+          }
+        ],
+        "model_need_nm": 0.02,
+        "fit": {
+          "scale": null,
+          "friction": 0.285,
+          "n": 144,
+          "note": "gravity range too small to fit"
+        },
+        "flipped": true,
+        "verdict": "OK - peak 0.6 Nm, max set 1.25 Nm",
+        "visual_check": true,
+        "home_rad": 0.0,
+        "probe_abort": null,
+        "free_other_way": null,
+        "arc_deg": 28.6,
+        "cap": 2.5,
+        "max_torque": 1.25,
+        "gravity_scale": 1.0,
+        "headroom": 1.25
+      },
+      "cal_cap": 2.5,
+      "cal_arc": 0.5,
+      "range_lower": null,
+      "range_upper": null
+    }
+  }
+}

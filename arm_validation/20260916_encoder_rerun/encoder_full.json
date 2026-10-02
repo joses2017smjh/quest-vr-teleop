@@ -1,0 +1,2019 @@
+{
+  "created": "2026-09-16T10:46:58",
+  "phase": "encoder_full",
+  "seconds_per_motor": 4.0,
+  "buses": {
+    "can0": {
+      "limb": "left arm",
+      "link_before": {
+        "state": "ERROR-ACTIVE",
+        "bitrate": 1000000,
+        "operstate": "UP",
+        "restarts": 0,
+        "bus_error": 0,
+        "arbitration_lost": 0,
+        "error_warning": 0,
+        "error_passive": 0,
+        "bus_off": 0,
+        "rx_packets": 830,
+        "rx_errors": 0,
+        "tx_packets": 460,
+        "tx_errors": 0
+      },
+      "scan": {
+        "1": {
+          "addressed_id": 1,
+          "online": true,
+          "ping_ok": 3,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            1,
+            1,
+            1
+          ],
+          "sdo_reply_rate": "3/3",
+          "self_reported_id": 1,
+          "id_consistent": true
+        },
+        "2": {
+          "addressed_id": 2,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "3": {
+          "addressed_id": 3,
+          "online": true,
+          "ping_ok": 3,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            3,
+            3,
+            3
+          ],
+          "sdo_reply_rate": "3/3",
+          "self_reported_id": 3,
+          "id_consistent": true
+        },
+        "4": {
+          "addressed_id": 4,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "5": {
+          "addressed_id": 5,
+          "online": true,
+          "ping_ok": 3,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            5,
+            5,
+            5
+          ],
+          "sdo_reply_rate": "3/3",
+          "self_reported_id": 5,
+          "id_consistent": true
+        },
+        "6": {
+          "addressed_id": 6,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "7": {
+          "addressed_id": 7,
+          "online": true,
+          "ping_ok": 3,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            7,
+            7,
+            7
+          ],
+          "sdo_reply_rate": "3/3",
+          "self_reported_id": 7,
+          "id_consistent": true
+        },
+        "8": {
+          "addressed_id": 8,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "9": {
+          "addressed_id": 9,
+          "online": true,
+          "ping_ok": 3,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            9,
+            9,
+            9
+          ],
+          "sdo_reply_rate": "3/3",
+          "self_reported_id": 9,
+          "id_consistent": true
+        },
+        "10": {
+          "addressed_id": 10,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "11": {
+          "addressed_id": 11,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "12": {
+          "addressed_id": 12,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "13": {
+          "addressed_id": 13,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "14": {
+          "addressed_id": 14,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "15": {
+          "addressed_id": 15,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "16": {
+          "addressed_id": 16,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        }
+      },
+      "online": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "expected_repo": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "expected_asbuilt": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "sampled_ids": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "link_after": {
+        "state": "ERROR-ACTIVE",
+        "bitrate": 1000000,
+        "operstate": "UP",
+        "restarts": 0,
+        "bus_error": 0,
+        "arbitration_lost": 0,
+        "error_warning": 0,
+        "error_passive": 0,
+        "bus_off": 0,
+        "rx_packets": 89020,
+        "rx_errors": 0,
+        "tx_packets": 44588,
+        "tx_errors": 0
+      },
+      "traffic": {
+        "tx": 44128,
+        "rx": 44062,
+        "timeouts": 66,
+        "error_frames": 0
+      },
+      "ranked_round_robin": [
+        {
+          "id": 3,
+          "joint": "left_shoulder_roll_joint",
+          "samples": 1504,
+          "travel_counts": 1,
+          "travel_deg_rotor": 0.09,
+          "stdev": 0.36,
+          "min": 2766,
+          "max": 2767
+        },
+        {
+          "id": 7,
+          "joint": "left_elbow_joint",
+          "samples": 1504,
+          "travel_counts": 1,
+          "travel_deg_rotor": 0.09,
+          "stdev": 0.197,
+          "min": 707,
+          "max": 708
+        },
+        {
+          "id": 1,
+          "joint": "left_shoulder_pitch_joint",
+          "samples": 1504,
+          "travel_counts": 0,
+          "travel_deg_rotor": 0.0,
+          "stdev": 0.0,
+          "min": 2559,
+          "max": 2559
+        },
+        {
+          "id": 5,
+          "joint": "left_shoulder_yaw_joint",
+          "samples": 1504,
+          "travel_counts": 0,
+          "travel_deg_rotor": 0.0,
+          "stdev": 0.0,
+          "min": 1330,
+          "max": 1330
+        },
+        {
+          "id": 9,
+          "joint": "left_wrist_yaw_joint",
+          "samples": 1504,
+          "travel_counts": 0,
+          "travel_deg_rotor": 0.0,
+          "stdev": 0.0,
+          "min": 3971,
+          "max": 3971
+        }
+      ]
+    },
+    "can1": {
+      "limb": "right arm",
+      "link_before": {
+        "state": "ERROR-ACTIVE",
+        "bitrate": 1000000,
+        "operstate": "UP",
+        "restarts": 0,
+        "bus_error": 0,
+        "arbitration_lost": 0,
+        "error_warning": 0,
+        "error_passive": 0,
+        "bus_off": 0,
+        "rx_packets": 828,
+        "rx_errors": 0,
+        "tx_packets": 458,
+        "tx_errors": 0
+      },
+      "scan": {
+        "1": {
+          "addressed_id": 1,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "2": {
+          "addressed_id": 2,
+          "online": true,
+          "ping_ok": 3,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            2,
+            2,
+            2
+          ],
+          "sdo_reply_rate": "3/3",
+          "self_reported_id": 2,
+          "id_consistent": true
+        },
+        "3": {
+          "addressed_id": 3,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "4": {
+          "addressed_id": 4,
+          "online": true,
+          "ping_ok": 3,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            4,
+            4,
+            4
+          ],
+          "sdo_reply_rate": "3/3",
+          "self_reported_id": 4,
+          "id_consistent": true
+        },
+        "5": {
+          "addressed_id": 5,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "6": {
+          "addressed_id": 6,
+          "online": true,
+          "ping_ok": 3,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            6,
+            6,
+            6
+          ],
+          "sdo_reply_rate": "3/3",
+          "self_reported_id": 6,
+          "id_consistent": true
+        },
+        "7": {
+          "addressed_id": 7,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "8": {
+          "addressed_id": 8,
+          "online": true,
+          "ping_ok": 3,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            8,
+            8,
+            8
+          ],
+          "sdo_reply_rate": "3/3",
+          "self_reported_id": 8,
+          "id_consistent": true
+        },
+        "9": {
+          "addressed_id": 9,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "10": {
+          "addressed_id": 10,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "11": {
+          "addressed_id": 11,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "12": {
+          "addressed_id": 12,
+          "online": true,
+          "ping_ok": 3,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            12,
+            12,
+            12
+          ],
+          "sdo_reply_rate": "3/3",
+          "self_reported_id": 12,
+          "id_consistent": true
+        },
+        "13": {
+          "addressed_id": 13,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "14": {
+          "addressed_id": 14,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "15": {
+          "addressed_id": 15,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        },
+        "16": {
+          "addressed_id": 16,
+          "online": false,
+          "ping_ok": 0,
+          "ping_attempts": 3,
+          "sdo_replies": [
+            null,
+            null,
+            null
+          ],
+          "sdo_reply_rate": "0/3",
+          "self_reported_id": null,
+          "id_consistent": false
+        }
+      },
+      "online": [
+        2,
+        4,
+        6,
+        8,
+        12
+      ],
+      "expected_repo": [
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "expected_asbuilt": [
+        2,
+        4,
+        6,
+        8,
+        12
+      ],
+      "sampled_ids": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12
+      ],
+      "link_after": {
+        "state": "ERROR-ACTIVE",
+        "bitrate": 1000000,
+        "operstate": "UP",
+        "restarts": 0,
+        "bus_error": 0,
+        "arbitration_lost": 0,
+        "error_warning": 0,
+        "error_passive": 0,
+        "bus_off": 0,
+        "rx_packets": 75061,
+        "rx_errors": 0,
+        "tx_packets": 37705,
+        "tx_errors": 0
+      },
+      "traffic": {
+        "tx": 37247,
+        "rx": 36986,
+        "timeouts": 261,
+        "error_frames": 0
+      },
+      "ranked_round_robin": [
+        {
+          "id": 2,
+          "joint": "right_shoulder_pitch_joint",
+          "samples": 75,
+          "travel_counts": 1,
+          "travel_deg_rotor": 0.09,
+          "stdev": 0.419,
+          "min": 2444,
+          "max": 2445
+        },
+        {
+          "id": 4,
+          "joint": "right_shoulder_roll_joint",
+          "samples": 75,
+          "travel_counts": 0,
+          "travel_deg_rotor": 0.0,
+          "stdev": 0.0,
+          "min": 1289,
+          "max": 1289
+        },
+        {
+          "id": 6,
+          "joint": "right_shoulder_yaw_joint",
+          "samples": 75,
+          "travel_counts": 0,
+          "travel_deg_rotor": 0.0,
+          "stdev": 0.0,
+          "min": 1504,
+          "max": 1504
+        },
+        {
+          "id": 8,
+          "joint": "right_elbow_joint",
+          "samples": 75,
+          "travel_counts": 0,
+          "travel_deg_rotor": 0.0,
+          "stdev": 0.0,
+          "min": 451,
+          "max": 451
+        },
+        {
+          "id": 10,
+          "joint": "right_wrist_yaw_joint",
+          "samples": 0,
+          "travel_counts": 0,
+          "travel_deg_rotor": 0,
+          "stdev": 0,
+          "min": null,
+          "max": null
+        },
+        {
+          "id": 12,
+          "joint": "right_wrist_yaw_joint",
+          "samples": 75,
+          "travel_counts": 0,
+          "travel_deg_rotor": 0.0,
+          "stdev": 0.0,
+          "min": 2465,
+          "max": 2465
+        }
+      ]
+    }
+  },
+  "motors": [
+    {
+      "bus": "can0",
+      "id": 1,
+      "joint": "left_shoulder_pitch_joint",
+      "repo_joint": "left_shoulder_pitch_joint",
+      "as_built": true,
+      "snapshot": {
+        "device_id": 1,
+        "firmware_version": 539296294,
+        "mode_raw": 2,
+        "error_raw": 8256,
+        "update_counter": 4,
+        "gear_ratio": 1.0,
+        "bus_voltage": 22.90743637084961,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 2559,
+        "encoder_i2c_reading": 50436,
+        "encoder_n_rotations": 0,
+        "encoder_position": 3.925457000732422,
+        "encoder_velocity": 14683.1484375,
+        "encoder_flux_offset": -44.03857421875,
+        "position_measured": 3.925457000732422,
+        "velocity_measured": 14683.1484375,
+        "i_a": 0.0335693359375,
+        "i_b": 0.0335693359375,
+        "i_c": 0.01678466796875,
+        "online": true
+      },
+      "snapshot_after": {
+        "device_id": 1,
+        "firmware_version": 539296294,
+        "mode_raw": 2,
+        "error_raw": 8256,
+        "update_counter": 0,
+        "gear_ratio": 1.0,
+        "bus_voltage": 22.90886116027832,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 2559,
+        "encoder_i2c_reading": 50436,
+        "encoder_n_rotations": 0,
+        "encoder_position": 3.925457000732422,
+        "encoder_velocity": 14683.1484375,
+        "encoder_flux_offset": -44.03857421875,
+        "position_measured": 3.925457000732422,
+        "velocity_measured": 14683.1484375,
+        "i_a": 0.01678466796875,
+        "i_b": 0.08392333984375,
+        "i_c": 0.0335693359375
+      },
+      "stream": {
+        "samples": 6305,
+        "duration_s": 4.0,
+        "sample_rate_hz": 1576.2,
+        "read_misses": 0,
+        "min": 2559,
+        "max": 2559,
+        "first5": [
+          2559,
+          2559,
+          2559,
+          2559,
+          2559
+        ],
+        "last5": [
+          2559,
+          2559,
+          2559,
+          2559,
+          2559
+        ],
+        "mean_unwrapped": 2559.0,
+        "stdev_unwrapped": 0.0,
+        "p2p_counts": 0,
+        "p2p_deg_rotor": 0.0,
+        "repeated_frac": 1.0,
+        "jumps_gt_200": 0,
+        "largest_step": 0,
+        "distinct_values": 1,
+        "i2c_samples": 158,
+        "i2c_out_of_range": 158,
+        "i2c_vs_posraw_mismatch": 0,
+        "i2c_min": 50436,
+        "i2c_max": 50436,
+        "median_dt_ms": 0.52,
+        "loop_alive": true,
+        "update_counter_first": 3,
+        "update_counter_last": 0,
+        "circular": {
+          "R": 1.0,
+          "centre_counts": 2559.0,
+          "centre_deg": 224.91,
+          "mad": 0.0
+        },
+        "histogram_16": {
+          "bins": 16,
+          "counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            6305,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "high_byte": {
+            "9": 6305
+          },
+          "high_byte_max": 9,
+          "high_byte_min": 9
+        },
+        "verdict": "ENCODER_OOR",
+        "why": "158 I2C ANGLE values >= cpr; firmware encoder.c:55 raises ERROR_ENCODER_FAULT on this exact condition"
+      }
+    },
+    {
+      "bus": "can0",
+      "id": 3,
+      "joint": "left_shoulder_roll_joint",
+      "repo_joint": "left_shoulder_roll_joint",
+      "as_built": true,
+      "snapshot": {
+        "device_id": 3,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 1,
+        "gear_ratio": 1.0,
+        "bus_voltage": 4.123959541320801,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 2767,
+        "encoder_i2c_reading": 2767,
+        "encoder_n_rotations": -1,
+        "encoder_position": -2.0386605262756348,
+        "encoder_velocity": 7.868624237652918e-31,
+        "encoder_flux_offset": 19.785003662109375,
+        "position_measured": -2.0386605262756348,
+        "velocity_measured": 1.4584462182969118e-39,
+        "i_a": -0.0,
+        "i_b": -0.0,
+        "i_c": -0.0,
+        "online": true
+      },
+      "snapshot_after": {
+        "device_id": 3,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 2,
+        "gear_ratio": 1.0,
+        "bus_voltage": 4.117949485778809,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 2767,
+        "encoder_i2c_reading": 2767,
+        "encoder_n_rotations": -1,
+        "encoder_position": -2.0386605262756348,
+        "encoder_velocity": 3.0342573609232204e-06,
+        "encoder_flux_offset": 19.785003662109375,
+        "position_measured": -2.040194511413574,
+        "velocity_measured": -10.72681999206543,
+        "i_a": -0.01678466796875,
+        "i_b": 0.01678466796875,
+        "i_c": -0.0335693359375
+      },
+      "stream": {
+        "samples": 6300,
+        "duration_s": 4.0,
+        "sample_rate_hz": 1575.0,
+        "read_misses": 0,
+        "min": 2766,
+        "max": 2767,
+        "first5": [
+          2767,
+          2767,
+          2767,
+          2767,
+          2767
+        ],
+        "last5": [
+          2766,
+          2767,
+          2767,
+          2767,
+          2767
+        ],
+        "mean_unwrapped": 2766.85,
+        "stdev_unwrapped": 0.355,
+        "p2p_counts": 1,
+        "p2p_deg_rotor": 0.088,
+        "repeated_frac": 0.874,
+        "jumps_gt_200": 0,
+        "largest_step": 1,
+        "distinct_values": 2,
+        "i2c_samples": 158,
+        "i2c_out_of_range": 0,
+        "i2c_vs_posraw_mismatch": 0,
+        "i2c_min": 2766,
+        "i2c_max": 2767,
+        "median_dt_ms": 0.52,
+        "loop_alive": true,
+        "update_counter_first": 3,
+        "update_counter_last": 4,
+        "circular": {
+          "R": 1.0,
+          "centre_counts": 2766.85,
+          "centre_deg": 243.18,
+          "mad": 0.15
+        },
+        "histogram_16": {
+          "bins": 16,
+          "counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            6300,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "high_byte": {
+            "10": 6300
+          },
+          "high_byte_max": 10,
+          "high_byte_min": 10
+        },
+        "verdict": "ENCODER_QUIET",
+        "why": "p2p 1 counts, stdev 0.355, loop_alive=True"
+      }
+    },
+    {
+      "bus": "can0",
+      "id": 5,
+      "joint": "left_shoulder_yaw_joint",
+      "repo_joint": "left_shoulder_yaw_joint",
+      "as_built": true,
+      "snapshot": {
+        "device_id": 5,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 2,
+        "gear_ratio": 1.0,
+        "bus_voltage": 4.101318359375,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 1330,
+        "encoder_i2c_reading": 1330,
+        "encoder_n_rotations": 0,
+        "encoder_position": 2.040194511413574,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": -43.9334602355957,
+        "position_measured": 2.040194511413574,
+        "velocity_measured": 0.0,
+        "i_a": -0.067138671875,
+        "i_b": 0.01678466796875,
+        "i_c": -0.01678466796875,
+        "online": true
+      },
+      "snapshot_after": {
+        "device_id": 5,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 0,
+        "gear_ratio": 1.0,
+        "bus_voltage": 4.089046478271484,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 1330,
+        "encoder_i2c_reading": 1330,
+        "encoder_n_rotations": 0,
+        "encoder_position": 2.040194511413574,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": -43.9334602355957,
+        "position_measured": 2.040194511413574,
+        "velocity_measured": 0.0,
+        "i_a": -0.0335693359375,
+        "i_b": -0.01678466796875,
+        "i_c": -0.01678466796875
+      },
+      "stream": {
+        "samples": 6035,
+        "duration_s": 4.0,
+        "sample_rate_hz": 1508.7,
+        "read_misses": 0,
+        "min": 1330,
+        "max": 1330,
+        "first5": [
+          1330,
+          1330,
+          1330,
+          1330,
+          1330
+        ],
+        "last5": [
+          1330,
+          1330,
+          1330,
+          1330,
+          1330
+        ],
+        "mean_unwrapped": 1330.0,
+        "stdev_unwrapped": 0.0,
+        "p2p_counts": 0,
+        "p2p_deg_rotor": 0.0,
+        "repeated_frac": 1.0,
+        "jumps_gt_200": 0,
+        "largest_step": 0,
+        "distinct_values": 1,
+        "i2c_samples": 151,
+        "i2c_out_of_range": 0,
+        "i2c_vs_posraw_mismatch": 0,
+        "i2c_min": 1330,
+        "i2c_max": 1330,
+        "median_dt_ms": 0.52,
+        "loop_alive": true,
+        "update_counter_first": 2,
+        "update_counter_last": 2,
+        "circular": {
+          "R": 1.0,
+          "centre_counts": 1330.0,
+          "centre_deg": 116.89,
+          "mad": 0.0
+        },
+        "histogram_16": {
+          "bins": 16,
+          "counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            6035,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "high_byte": {
+            "5": 6035
+          },
+          "high_byte_max": 5,
+          "high_byte_min": 5
+        },
+        "verdict": "ENCODER_CONSTANT",
+        "why": "raw stuck at 1330 with loop alive; quiet magnet OR frozen sensor -- hand-rotate to distinguish"
+      }
+    },
+    {
+      "bus": "can0",
+      "id": 7,
+      "joint": "left_elbow_joint",
+      "repo_joint": "left_elbow_joint",
+      "as_built": true,
+      "snapshot": {
+        "device_id": 7,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 3,
+        "gear_ratio": 1.0,
+        "bus_voltage": 4.110766410827637,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 707,
+        "encoder_i2c_reading": 707,
+        "encoder_n_rotations": 0,
+        "encoder_position": 1.084524393081665,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": -19.932178497314453,
+        "position_measured": 1.084524393081665,
+        "velocity_measured": 0.0,
+        "i_a": -0.0,
+        "i_b": 0.0335693359375,
+        "i_c": 0.01678466796875,
+        "online": true
+      },
+      "snapshot_after": {
+        "device_id": 7,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 1,
+        "gear_ratio": 1.0,
+        "bus_voltage": 4.106752395629883,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 707,
+        "encoder_i2c_reading": 707,
+        "encoder_n_rotations": 0,
+        "encoder_position": 1.084524393081665,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": -19.932178497314453,
+        "position_measured": 1.084524393081665,
+        "velocity_measured": 0.0,
+        "i_a": -0.0,
+        "i_b": 0.01678466796875,
+        "i_c": -0.0
+      },
+      "stream": {
+        "samples": 6267,
+        "duration_s": 4.001,
+        "sample_rate_hz": 1566.4,
+        "read_misses": 0,
+        "min": 707,
+        "max": 708,
+        "first5": [
+          707,
+          707,
+          707,
+          707,
+          707
+        ],
+        "last5": [
+          707,
+          707,
+          707,
+          707,
+          707
+        ],
+        "mean_unwrapped": 707.04,
+        "stdev_unwrapped": 0.194,
+        "p2p_counts": 1,
+        "p2p_deg_rotor": 0.088,
+        "repeated_frac": 0.957,
+        "jumps_gt_200": 0,
+        "largest_step": 1,
+        "distinct_values": 2,
+        "i2c_samples": 157,
+        "i2c_out_of_range": 0,
+        "i2c_vs_posraw_mismatch": 0,
+        "i2c_min": 707,
+        "i2c_max": 708,
+        "median_dt_ms": 0.52,
+        "loop_alive": true,
+        "update_counter_first": 0,
+        "update_counter_last": 3,
+        "circular": {
+          "R": 1.0,
+          "centre_counts": 707.04,
+          "centre_deg": 62.14,
+          "mad": 0.04
+        },
+        "histogram_16": {
+          "bins": 16,
+          "counts": [
+            0,
+            0,
+            6267,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "high_byte": {
+            "2": 6267
+          },
+          "high_byte_max": 2,
+          "high_byte_min": 2
+        },
+        "verdict": "ENCODER_QUIET",
+        "why": "p2p 1 counts, stdev 0.194, loop_alive=True"
+      }
+    },
+    {
+      "bus": "can0",
+      "id": 9,
+      "joint": "left_wrist_yaw_joint",
+      "repo_joint": "left_wrist_yaw_joint",
+      "as_built": true,
+      "snapshot": {
+        "device_id": 9,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 2,
+        "gear_ratio": 1.0,
+        "bus_voltage": 4.09546422958374,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 3971,
+        "encoder_i2c_reading": 3971,
+        "encoder_n_rotations": -1,
+        "encoder_position": -0.19174760580062866,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": -40.60542678833008,
+        "position_measured": -0.19174760580062866,
+        "velocity_measured": 0.0,
+        "i_a": 0.01678466796875,
+        "i_b": -0.05035400390625,
+        "i_c": 0.01678466796875,
+        "online": true
+      },
+      "snapshot_after": {
+        "device_id": 9,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 3,
+        "gear_ratio": 1.0,
+        "bus_voltage": 4.08795690536499,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 3971,
+        "encoder_i2c_reading": 3971,
+        "encoder_n_rotations": -1,
+        "encoder_position": -0.19174760580062866,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": -40.60542678833008,
+        "position_measured": -0.19174760580062866,
+        "velocity_measured": 0.0,
+        "i_a": 0.0335693359375,
+        "i_b": -0.0335693359375,
+        "i_c": 0.01678466796875
+      },
+      "stream": {
+        "samples": 5341,
+        "duration_s": 4.001,
+        "sample_rate_hz": 1335.0,
+        "read_misses": 0,
+        "min": 3970,
+        "max": 3971,
+        "first5": [
+          3971,
+          3971,
+          3971,
+          3971,
+          3971
+        ],
+        "last5": [
+          3971,
+          3971,
+          3971,
+          3971,
+          3971
+        ],
+        "mean_unwrapped": 3971.0,
+        "stdev_unwrapped": 0.051,
+        "p2p_counts": 1,
+        "p2p_deg_rotor": 0.088,
+        "repeated_frac": 0.995,
+        "jumps_gt_200": 0,
+        "largest_step": 1,
+        "distinct_values": 2,
+        "i2c_samples": 134,
+        "i2c_out_of_range": 0,
+        "i2c_vs_posraw_mismatch": 0,
+        "i2c_min": 3971,
+        "i2c_max": 3971,
+        "median_dt_ms": 0.55,
+        "loop_alive": true,
+        "update_counter_first": 3,
+        "update_counter_last": 3,
+        "circular": {
+          "R": 1.0,
+          "centre_counts": 3971.0,
+          "centre_deg": 349.01,
+          "mad": 0.0
+        },
+        "histogram_16": {
+          "bins": 16,
+          "counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            5341
+          ],
+          "high_byte": {
+            "15": 5341
+          },
+          "high_byte_max": 15,
+          "high_byte_min": 15
+        },
+        "verdict": "ENCODER_QUIET",
+        "why": "p2p 1 counts, stdev 0.051, loop_alive=True"
+      }
+    },
+    {
+      "bus": "can1",
+      "id": 2,
+      "joint": "right_shoulder_pitch_joint",
+      "repo_joint": "right_shoulder_pitch_joint",
+      "as_built": true,
+      "snapshot": {
+        "device_id": 2,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 3,
+        "gear_ratio": 1.0,
+        "bus_voltage": 23.121456146240234,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 2444,
+        "encoder_i2c_reading": 2445,
+        "encoder_n_rotations": -5,
+        "encoder_position": -27.66687774658203,
+        "encoder_velocity": 0.06615176796913147,
+        "encoder_flux_offset": 43.819580078125,
+        "position_measured": -27.66534423828125,
+        "velocity_measured": -0.2529168128967285,
+        "i_a": -0.0,
+        "i_b": 0.01678466796875,
+        "i_c": -0.0,
+        "online": true
+      },
+      "snapshot_after": {
+        "device_id": 2,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 4,
+        "gear_ratio": 1.0,
+        "bus_voltage": 23.114912033081055,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 2445,
+        "encoder_i2c_reading": 2445,
+        "encoder_n_rotations": -5,
+        "encoder_position": -27.66687774658203,
+        "encoder_velocity": 0.07151022553443909,
+        "encoder_flux_offset": 43.819580078125,
+        "position_measured": -27.66534423828125,
+        "velocity_measured": 8.762238508097653e-07,
+        "i_a": -0.01678466796875,
+        "i_b": -0.01678466796875,
+        "i_c": 0.01678466796875
+      },
+      "stream": {
+        "samples": 5943,
+        "duration_s": 4.0,
+        "sample_rate_hz": 1485.6,
+        "read_misses": 0,
+        "min": 2444,
+        "max": 2445,
+        "first5": [
+          2445,
+          2445,
+          2445,
+          2445,
+          2445
+        ],
+        "last5": [
+          2445,
+          2445,
+          2445,
+          2445,
+          2445
+        ],
+        "mean_unwrapped": 2444.77,
+        "stdev_unwrapped": 0.422,
+        "p2p_counts": 1,
+        "p2p_deg_rotor": 0.088,
+        "repeated_frac": 0.82,
+        "jumps_gt_200": 0,
+        "largest_step": 1,
+        "distinct_values": 2,
+        "i2c_samples": 149,
+        "i2c_out_of_range": 0,
+        "i2c_vs_posraw_mismatch": 0,
+        "i2c_min": 2444,
+        "i2c_max": 2445,
+        "median_dt_ms": 0.53,
+        "loop_alive": true,
+        "update_counter_first": 1,
+        "update_counter_last": 3,
+        "circular": {
+          "R": 1.0,
+          "centre_counts": 2444.77,
+          "centre_deg": 214.87,
+          "mad": 0.23
+        },
+        "histogram_16": {
+          "bins": 16,
+          "counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            5943,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "high_byte": {
+            "9": 5943
+          },
+          "high_byte_max": 9,
+          "high_byte_min": 9
+        },
+        "verdict": "ENCODER_QUIET",
+        "why": "p2p 1 counts, stdev 0.422, loop_alive=True"
+      }
+    },
+    {
+      "bus": "can1",
+      "id": 4,
+      "joint": "right_shoulder_roll_joint",
+      "repo_joint": "right_shoulder_roll_joint",
+      "as_built": true,
+      "snapshot": {
+        "device_id": 4,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 0,
+        "gear_ratio": 1.0,
+        "bus_voltage": 23.09595489501953,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 1289,
+        "encoder_i2c_reading": 1289,
+        "encoder_n_rotations": 0,
+        "encoder_position": 1.9773012399673462,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": 37.574005126953125,
+        "position_measured": 1.9773012399673462,
+        "velocity_measured": 0.0,
+        "i_a": 0.08392333984375,
+        "i_b": -0.0,
+        "i_c": 0.01678466796875,
+        "online": true
+      },
+      "snapshot_after": {
+        "device_id": 4,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 3,
+        "gear_ratio": 1.0,
+        "bus_voltage": 23.092700958251953,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 1289,
+        "encoder_i2c_reading": 1289,
+        "encoder_n_rotations": 0,
+        "encoder_position": 1.9773012399673462,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": 37.574005126953125,
+        "position_measured": 1.9773012399673462,
+        "velocity_measured": 0.0,
+        "i_a": 0.01678466796875,
+        "i_b": -0.0,
+        "i_c": -0.0
+      },
+      "stream": {
+        "samples": 5897,
+        "duration_s": 4.0,
+        "sample_rate_hz": 1474.1,
+        "read_misses": 0,
+        "min": 1289,
+        "max": 1289,
+        "first5": [
+          1289,
+          1289,
+          1289,
+          1289,
+          1289
+        ],
+        "last5": [
+          1289,
+          1289,
+          1289,
+          1289,
+          1289
+        ],
+        "mean_unwrapped": 1289.0,
+        "stdev_unwrapped": 0.0,
+        "p2p_counts": 0,
+        "p2p_deg_rotor": 0.0,
+        "repeated_frac": 1.0,
+        "jumps_gt_200": 0,
+        "largest_step": 0,
+        "distinct_values": 1,
+        "i2c_samples": 148,
+        "i2c_out_of_range": 0,
+        "i2c_vs_posraw_mismatch": 0,
+        "i2c_min": 1289,
+        "i2c_max": 1289,
+        "median_dt_ms": 0.53,
+        "loop_alive": true,
+        "update_counter_first": 2,
+        "update_counter_last": 2,
+        "circular": {
+          "R": 1.0,
+          "centre_counts": 1289.0,
+          "centre_deg": 113.29,
+          "mad": 0.0
+        },
+        "histogram_16": {
+          "bins": 16,
+          "counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            5897,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "high_byte": {
+            "5": 5897
+          },
+          "high_byte_max": 5,
+          "high_byte_min": 5
+        },
+        "verdict": "ENCODER_CONSTANT",
+        "why": "raw stuck at 1289 with loop alive; quiet magnet OR frozen sensor -- hand-rotate to distinguish"
+      }
+    },
+    {
+      "bus": "can1",
+      "id": 6,
+      "joint": "right_shoulder_yaw_joint",
+      "repo_joint": "right_shoulder_yaw_joint",
+      "as_built": true,
+      "snapshot": {
+        "device_id": 6,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 1,
+        "gear_ratio": 1.0,
+        "bus_voltage": 22.783105850219727,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 1504,
+        "encoder_i2c_reading": 1504,
+        "encoder_n_rotations": 0,
+        "encoder_position": 2.3071072101593018,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": -43.94754409790039,
+        "position_measured": 2.3071072101593018,
+        "velocity_measured": 0.0,
+        "i_a": -0.01678466796875,
+        "i_b": -0.0335693359375,
+        "i_c": 0.01678466796875,
+        "online": true
+      },
+      "snapshot_after": {
+        "device_id": 6,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 1,
+        "gear_ratio": 1.0,
+        "bus_voltage": 22.7716064453125,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 1504,
+        "encoder_i2c_reading": 1504,
+        "encoder_n_rotations": 0,
+        "encoder_position": 2.3071072101593018,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": -43.94754409790039,
+        "position_measured": 2.3071072101593018,
+        "velocity_measured": 0.0,
+        "i_a": 0.01678466796875,
+        "i_b": -0.0335693359375,
+        "i_c": 0.01678466796875
+      },
+      "stream": {
+        "samples": 6205,
+        "duration_s": 4.0,
+        "sample_rate_hz": 1551.1,
+        "read_misses": 0,
+        "min": 1504,
+        "max": 1504,
+        "first5": [
+          1504,
+          1504,
+          1504,
+          1504,
+          1504
+        ],
+        "last5": [
+          1504,
+          1504,
+          1504,
+          1504,
+          1504
+        ],
+        "mean_unwrapped": 1504.0,
+        "stdev_unwrapped": 0.0,
+        "p2p_counts": 0,
+        "p2p_deg_rotor": 0.0,
+        "repeated_frac": 1.0,
+        "jumps_gt_200": 0,
+        "largest_step": 0,
+        "distinct_values": 1,
+        "i2c_samples": 156,
+        "i2c_out_of_range": 0,
+        "i2c_vs_posraw_mismatch": 0,
+        "i2c_min": 1504,
+        "i2c_max": 1504,
+        "median_dt_ms": 0.52,
+        "loop_alive": true,
+        "update_counter_first": 4,
+        "update_counter_last": 2,
+        "circular": {
+          "R": 1.0,
+          "centre_counts": 1504.0,
+          "centre_deg": 132.19,
+          "mad": 0.0
+        },
+        "histogram_16": {
+          "bins": 16,
+          "counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            6205,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "high_byte": {
+            "5": 6205
+          },
+          "high_byte_max": 5,
+          "high_byte_min": 5
+        },
+        "verdict": "ENCODER_CONSTANT",
+        "why": "raw stuck at 1504 with loop alive; quiet magnet OR frozen sensor -- hand-rotate to distinguish"
+      }
+    },
+    {
+      "bus": "can1",
+      "id": 8,
+      "joint": "right_elbow_joint",
+      "repo_joint": "right_elbow_joint",
+      "as_built": true,
+      "snapshot": {
+        "device_id": 8,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 3,
+        "gear_ratio": 1.0,
+        "bus_voltage": 23.14887237548828,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 451,
+        "encoder_i2c_reading": 451,
+        "encoder_n_rotations": 0,
+        "encoder_position": 0.6918253302574158,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": 43.95978546142578,
+        "position_measured": 0.6918253302574158,
+        "velocity_measured": 0.0,
+        "i_a": -0.01678466796875,
+        "i_b": -0.01678466796875,
+        "i_c": 0.0335693359375,
+        "online": true
+      },
+      "snapshot_after": {
+        "device_id": 8,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 2,
+        "gear_ratio": 1.0,
+        "bus_voltage": 23.15000343322754,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 451,
+        "encoder_i2c_reading": 451,
+        "encoder_n_rotations": 0,
+        "encoder_position": 0.6918253302574158,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": 43.95978546142578,
+        "position_measured": 0.6918253302574158,
+        "velocity_measured": 0.0,
+        "i_a": -0.0335693359375,
+        "i_b": -0.01678466796875,
+        "i_c": 0.01678466796875
+      },
+      "stream": {
+        "samples": 6065,
+        "duration_s": 4.0,
+        "sample_rate_hz": 1516.2,
+        "read_misses": 0,
+        "min": 451,
+        "max": 451,
+        "first5": [
+          451,
+          451,
+          451,
+          451,
+          451
+        ],
+        "last5": [
+          451,
+          451,
+          451,
+          451,
+          451
+        ],
+        "mean_unwrapped": 451.0,
+        "stdev_unwrapped": 0.0,
+        "p2p_counts": 0,
+        "p2p_deg_rotor": 0.0,
+        "repeated_frac": 1.0,
+        "jumps_gt_200": 0,
+        "largest_step": 0,
+        "distinct_values": 1,
+        "i2c_samples": 152,
+        "i2c_out_of_range": 0,
+        "i2c_vs_posraw_mismatch": 0,
+        "i2c_min": 451,
+        "i2c_max": 451,
+        "median_dt_ms": 0.52,
+        "loop_alive": true,
+        "update_counter_first": 3,
+        "update_counter_last": 4,
+        "circular": {
+          "R": 1.0,
+          "centre_counts": 451.0,
+          "centre_deg": 39.64,
+          "mad": 0.0
+        },
+        "histogram_16": {
+          "bins": 16,
+          "counts": [
+            0,
+            6065,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "high_byte": {
+            "1": 6065
+          },
+          "high_byte_max": 1,
+          "high_byte_min": 1
+        },
+        "verdict": "ENCODER_CONSTANT",
+        "why": "raw stuck at 451 with loop alive; quiet magnet OR frozen sensor -- hand-rotate to distinguish"
+      }
+    },
+    {
+      "bus": "can1",
+      "id": 10,
+      "joint": "right_wrist_yaw_joint",
+      "repo_joint": "right_wrist_yaw_joint",
+      "as_built": false,
+      "snapshot": {
+        "device_id": null,
+        "firmware_version": null,
+        "mode_raw": null,
+        "error_raw": null,
+        "update_counter": null,
+        "gear_ratio": null,
+        "bus_voltage": null,
+        "pole_pairs": null,
+        "encoder_cpr": null,
+        "encoder_position_raw": null,
+        "encoder_i2c_reading": null,
+        "encoder_n_rotations": null,
+        "encoder_position": null,
+        "encoder_velocity": null,
+        "encoder_flux_offset": null,
+        "position_measured": null,
+        "velocity_measured": null,
+        "i_a": null,
+        "i_b": null,
+        "i_c": null,
+        "online": false
+      },
+      "snapshot_after": {
+        "device_id": null,
+        "firmware_version": null,
+        "mode_raw": null,
+        "error_raw": null,
+        "update_counter": null,
+        "gear_ratio": null,
+        "bus_voltage": null,
+        "pole_pairs": null,
+        "encoder_cpr": null,
+        "encoder_position_raw": null,
+        "encoder_i2c_reading": null,
+        "encoder_n_rotations": null,
+        "encoder_position": null,
+        "encoder_velocity": null,
+        "encoder_flux_offset": null,
+        "position_measured": null,
+        "velocity_measured": null,
+        "i_a": null,
+        "i_b": null,
+        "i_c": null
+      },
+      "stream": {
+        "samples": 0,
+        "read_misses": 80,
+        "duration_s": 4.031,
+        "verdict": "NO_DATA",
+        "why": "node answered poorly; no encoder stream"
+      }
+    },
+    {
+      "bus": "can1",
+      "id": 12,
+      "joint": "right_wrist_yaw_joint",
+      "repo_joint": null,
+      "as_built": true,
+      "snapshot": {
+        "device_id": 12,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 2,
+        "gear_ratio": 1.0,
+        "bus_voltage": 22.876506805419922,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 2465,
+        "encoder_i2c_reading": 2465,
+        "encoder_n_rotations": -1,
+        "encoder_position": -2.501922845840454,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": -43.965362548828125,
+        "position_measured": -2.501922845840454,
+        "velocity_measured": 0.0,
+        "i_a": -0.0,
+        "i_b": 0.0335693359375,
+        "i_c": 0.0335693359375,
+        "online": true
+      },
+      "snapshot_after": {
+        "device_id": 12,
+        "firmware_version": 539296294,
+        "mode_raw": 1,
+        "error_raw": 0,
+        "update_counter": 2,
+        "gear_ratio": 1.0,
+        "bus_voltage": 22.855443954467773,
+        "pole_pairs": 14,
+        "encoder_cpr": 4096,
+        "encoder_position_raw": 2465,
+        "encoder_i2c_reading": 2465,
+        "encoder_n_rotations": -1,
+        "encoder_position": -2.501922845840454,
+        "encoder_velocity": 0.0,
+        "encoder_flux_offset": -43.965362548828125,
+        "position_measured": -2.501922845840454,
+        "velocity_measured": 0.0,
+        "i_a": -0.0,
+        "i_b": 0.0335693359375,
+        "i_c": 0.01678466796875
+      },
+      "stream": {
+        "samples": 6191,
+        "duration_s": 4.0,
+        "sample_rate_hz": 1547.6,
+        "read_misses": 0,
+        "min": 2465,
+        "max": 2465,
+        "first5": [
+          2465,
+          2465,
+          2465,
+          2465,
+          2465
+        ],
+        "last5": [
+          2465,
+          2465,
+          2465,
+          2465,
+          2465
+        ],
+        "mean_unwrapped": 2465.0,
+        "stdev_unwrapped": 0.0,
+        "p2p_counts": 0,
+        "p2p_deg_rotor": 0.0,
+        "repeated_frac": 1.0,
+        "jumps_gt_200": 0,
+        "largest_step": 0,
+        "distinct_values": 1,
+        "i2c_samples": 155,
+        "i2c_out_of_range": 0,
+        "i2c_vs_posraw_mismatch": 0,
+        "i2c_min": 2465,
+        "i2c_max": 2465,
+        "median_dt_ms": 0.52,
+        "loop_alive": true,
+        "update_counter_first": 0,
+        "update_counter_last": 2,
+        "circular": {
+          "R": 1.0,
+          "centre_counts": 2465.0,
+          "centre_deg": 216.65,
+          "mad": 0.0
+        },
+        "histogram_16": {
+          "bins": 16,
+          "counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            6191,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "high_byte": {
+            "9": 6191
+          },
+          "high_byte_max": 9,
+          "high_byte_min": 9
+        },
+        "verdict": "ENCODER_CONSTANT",
+        "why": "raw stuck at 2465 with loop alive; quiet magnet OR frozen sensor -- hand-rotate to distinguish"
+      }
+    }
+  ]
+}

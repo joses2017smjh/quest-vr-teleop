@@ -1,0 +1,33 @@
+{
+  "when": "2026-09-22T14:29:49",
+  "bus": "can1",
+  "id": 8,
+  "joint": "right_elbow",
+  "probed": false,
+  "state": {
+    "mode": "IDLE",
+    "error_raw": 64,
+    "vbus": 23.167314529418945,
+    "flux_offset": 24.070545196533203,
+    "encoder_raw": 1558,
+    "encoder_i2c": 1558,
+    "n_rotations": 0,
+    "position": -0.15932947397232056,
+    "error": {
+      "raw": 64,
+      "hex": "0x0040",
+      "bits": [
+        "WATCHDOG_TIMEOUT"
+      ],
+      "unknown_mask": null,
+      "critical": false
+    },
+    "phase_order": -1,
+    "pole_pairs": 14,
+    "torque_constant": 0.11760000139474869,
+    "gear_ratio": -15.0,
+    "encoder_cpr": 4096,
+    "i_limit": 20.0,
+    "cal_current": 3.0
+  }
+}

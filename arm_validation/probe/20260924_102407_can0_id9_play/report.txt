@@ -1,0 +1,3 @@
+ABORTED: current 3.64 A
+Transport: 594 reads, 0 retries, 0 timeouts, 0.66 ms/read; 0 of 5 steps failed a check and were left out
+too few valid steps to analyse

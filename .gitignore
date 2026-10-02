@@ -17,6 +17,9 @@
 # used to configure VS Code settings
 !.vscode
 
+# Quest WebXR TLS (generated locally)
+scripts/teleop/.certs/
+
 # Outputs
 **/runs/*
 **/logs/*
@@ -34,3 +37,8 @@ _isaac_sim*
 _repo
 _build
 .lastformat
+
+# Arm power profile backups/temp files (written by the headset calibration)
+configs/arm_power_profile.json.bak
+configs/arm_power_profile.json.tmp
+.claude/settings.local.json

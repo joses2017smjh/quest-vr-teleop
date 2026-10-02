@@ -32,7 +32,7 @@
         "cpr": 4096,
         "position_offset": 0.0,
         "velocity_filter_alpha": 0.7153904438018799,
-        "flux_offset": 37.83759307861328
+        "flux_offset": 19.785003662109375
     },
     "device_id": 3,
     "firmware_version": "0x20250226",

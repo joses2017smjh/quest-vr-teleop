@@ -1,0 +1,47 @@
+{
+  "bus": "can0",
+  "id": 3,
+  "joint": "left_shoulder_roll_joint",
+  "status": {
+    "mode_raw": 1,
+    "mode": "IDLE",
+    "mode_safe": true,
+    "error": {
+      "raw": 0,
+      "hex": "0x0000",
+      "bits": [],
+      "unknown_mask": null,
+      "critical": false
+    },
+    "watchdog_timeout": 1000,
+    "online": true
+  },
+  "positions": [
+    {
+      "step": 1,
+      "n": 2321,
+      "centre_counts": 2688.1,
+      "centre_deg": 236.3,
+      "concentration_R": 0.5492,
+      "median_abs_dev_counts": 418.9
+    },
+    {
+      "step": 2,
+      "n": 2379,
+      "centre_counts": 1836.0,
+      "centre_deg": 161.4,
+      "concentration_R": 0.5813,
+      "median_abs_dev_counts": 481.0
+    },
+    {
+      "step": 3,
+      "n": 2294,
+      "centre_counts": 1139.2,
+      "centre_deg": 100.1,
+      "concentration_R": 0.159,
+      "median_abs_dev_counts": 707.2
+    }
+  ],
+  "spread_counts": 1548.8999999999999,
+  "verdict": "TRACKS -- a magnet IS coupled to the shaft. The angle follows the joint, so the fault is field STRENGTH/ALIGNMENT (air gap, off-centre, weak magnet), not a missing magnet or a dead sensor link."
+}

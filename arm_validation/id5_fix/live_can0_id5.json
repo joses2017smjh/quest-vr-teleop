@@ -1,0 +1,16 @@
+{
+  "bus": "can0",
+  "id": 5,
+  "joint": "left_shoulder_yaw_joint",
+  "boot_at_s": null,
+  "last": {
+    "t": 599.8727159500122,
+    "mode": "DISABLED",
+    "vbus": 0.0,
+    "raw": 0,
+    "i2c": 0,
+    "upd": 0,
+    "gear": 0.0
+  },
+  "n": 3681
+}

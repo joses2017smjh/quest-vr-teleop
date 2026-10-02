@@ -1,0 +1,5 @@
+   +step to  +5.0 deg: ended  -0.01 (error -5.01), reached   -0%, 90% in never, wrong-way 0.01, overshoot 0.00, peak i_q 0.63 A  FAIL
+    back to  +0.0 deg: ended  -0.01 (error -0.01), reached   50%, 90% in never, wrong-way 0.00, overshoot 0.00, peak i_q 0.52 A  FAIL
+   -step to  -5.0 deg: ended  +0.00 (error +5.00), reached   -0%, 90% in never, wrong-way 0.01, overshoot 0.00, peak i_q 0.59 A  FAIL
+    back to  +0.0 deg: ended  +0.00 (error +0.00), reached    0%, 90% in 0.00 s, wrong-way 0.00, overshoot 0.00, peak i_q 0.59 A  FAIL
+CLOSED LOOP: FAIL
