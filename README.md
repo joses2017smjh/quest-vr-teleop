@@ -1,65 +1,83 @@
-> **This fork:** Quest 2 VR teleop for the arms, live tuning, voice + Claude in the headset, robot vision. See [docs/VR_TELEOP.md](docs/VR_TELEOP.md).
+# Berkeley Humanoid Lite · Quest VR Teleoperation
 
-# Berkeley Humanoid Lite
+**A Quest 2 browser interface for simulated and physical humanoid arms.**
 
-[![Python](https://img.shields.io/badge/python-3.10-blue.svg)](https://docs.python.org/3/whatsnew/3.10.html)
-[![License](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/license/mit)
-[![License](https://img.shields.io/badge/license-CC%20BY--SA%204.0-orange.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+I built a WebXR-to-robot control path around Berkeley Humanoid Lite: controller poses, inverse kinematics, SocketCAN actuation, per-joint power calibration, live tuning, and robot feedback inside the headset. The system runs beside the robot on a Linux Intel N150 PC.
 
-**[Website](http://lite.berkeley-humanoid.org/)** | **[arXiv](https://arxiv.org/abs/2504.17249)** | **[Paper](https://lite.berkeley-humanoid.org/static/paper/demonstrating-berkeley-humanoid-lite.pdf)** | **[Video](https://youtu.be/dIdJGkMDFl4?si=SRD7HhQQbhM3JCRA)** | **[Documentation](https://berkeley-humanoid-lite.gitbook.io/berkeley-humanoid-lite-docs)** | **[Releases](https://berkeley-humanoid-lite.gitbook.io/docs/releases)**
+[Portfolio and hardware demo](https://jose-sanchez-portfolio-com.vercel.app/projects/berkeley-humanoid-vr/) · [Operator guide](docs/VR_TELEOP.md) · [As-built notes](arm_validation/TELEOP_AND_ARM_BRINGUP.md)
 
+[![Operator wearing a Quest 2 beside the physical Berkeley Humanoid Lite arms](https://media.githubusercontent.com/media/joses2017smjh/quest-vr-teleop/main/docs/demo/quest-vr-teleop.gif)](https://jose-sanchez-portfolio-com.vercel.app/media/humanoid-vr/quest-vr-teleop.mp4)
 
-Berkeley Humanoid Lite is an open-source, sub-$5,000 humanoid robot featuring modular 3D-printed gearboxes and widely available components, designed to democratize and advance humanoid robotics research.
+*Selected montage from the October 1 recording: headset feedback and physical arm motion. Click for the video. The edited clip provides qualitative hardware evidence, not a tracking benchmark or learned locomotion-policy transfer result.*
 
-This project is built on the values of open-source, accessibility, and customization, and it's continuously evolving. We welcome your feedback, issues, and pull requests in GitHub or joining our Discord.
+## Problem, solution, contribution
 
-## Overview
+Upstream teleoperation uses SteamVR and Vive controllers. I replaced that input path with Meta Quest 2 controller tracking in the Quest Browser and added calibration, diagnostics, and feedback for this robot's actual arm wiring.
 
-This repository is the workspace for the Berkeley Humanoid Lite project that contains everything we need, including policy training, sim2sim validation, real-world deployment, motion capture, and teleoperated manipulation controls.
+The same headset flow can drive an offline joint model or the physical arms. The simulator models joint-side PD control, gravity, friction, torque limits, and end stops; it supports rehearsal and software tests, not proof of full-body policy transfer.
 
-Functionalities are organized into several submodules. We arrange the directory structure following the Isaac Lab convention, where each submodule can be installed as an extension:
+## Architecture
 
-- `source/berkeley_humanoid_lite/` contains the IsaacLab environment and task definitions.
-
-- `source/berkeley_humanoid_lite_assets/` contains robot descriptions (URDF, MJCF, and USD) and the script to export these description files from Onshape project.
-
-- `source/berkeley_humanoid_lite_lowlevel/` contains the lowlevel code running on the real robot. Only contents inside this folder is required to deploy to the real robot.
-
-Except a few edge cases, all the commands should be invoked from the root directory of this repository. The entry points of different flows are collected in the `scripts/` directory.
-
-
-## Getting Started
-
-Please refer to our [Documentation](https://berkeley-humanoid-lite.gitbook.io/docs) to get started with software and hardware setup.
-
-The latest release of CAD model and 3D print files can be accessed from the [Release](https://berkeley-humanoid-lite.gitbook.io/docs/releases) page.
-
-
-## Contributing
-
-We wholeheartedly welcome contributions from the community to make this robot platform more mature and useful for everyone. We appreciate any kind of contributions, including bug reports, feature requests, or code contributions.
-
-Also, please reach out to us to tell us about your projects and how you are using this robot platform. We would love to feature your work on our website and social media.
-
-## License
-
-The code in this repository is licensed under [MIT License](https://opensource.org/license/mit). See the [LICENSE](LICENSE) file for details.
-
-Other assets are under [Creative Commons Attribution-ShareAlike 4.0 International <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt="">](https://creativecommons.org/licenses/by-sa/4.0).
-
-
-## Citation
-
-If you find this code useful, we would appreciate if you would cite our paper:
-
+```mermaid
+flowchart LR
+  A[Quest 2 WebXR] -->|Poses and buttons| B[Python HTTP/WebSocket bridge]
+  B -->|UDP| C[Pink / Pinocchio IK and arm supervisor]
+  C --> D[PDO-3 SocketCAN driver]
+  D --> E[Ten arm joints]
+  C --> F[Arduino Nano claws and camera servos]
+  E -->|Joint feedback| B
+  G[Camera, lidar, IMU, voice] --> B
+  B -->|Status and panels| A
 ```
-@article{chi2025demonstrating,
-  title={Demonstrating Berkeley Humanoid Lite: An Open-source, Accessible, and Customizable 3D-printed Humanoid Robot},
-  author={Yufeng Chi and Qiayuan Liao and Junfeng Long and Xiaoyu Huang and Sophia Shao and Borivoje Nikolic and Zhongyu Li and Koushil Sreenath},
-  year={2025},
-  eprint={2504.17249},
-  archivePrefix={arXiv},
-  primaryClass={cs.RO},
-  url={https://arxiv.org/abs/2504.17249}, 
-}
+
+- `scripts/teleop/quest_bridge.html` and `quest_bridge.py`: WebXR input, transports, headset panels, and status relay.
+- `run_teleop.py`: inverse kinematics, motion gating, calibration, and tuning.
+- `arm_driver.py` and `arm_power.py`: hardware/offline drivers, batched CAN replies, gravity feedforward, and torque limits.
+- `arm_validation/`: calibration reports, encoder audits, closed-loop probes, and session logs.
+
+## Evidence and limits
+
+- **Physical arm bring-up:** the as-built notebook records controller tracking, UDP packets, arming, and joint movement. Ten joints are mapped across two 1-Mbps arm buses; the right wrist answers as ID 12 on this unit. [Lab notes](arm_validation/TELEOP_AND_ARM_BRINGUP.md)
+- **Ten-joint calibration:** the September 24 report records an `OK` verdict for each arm joint, with joint-specific torque ceilings and gravity fits. These are calibration results, not a general manipulation-success rate. [Report](arm_validation/calibration_20260924_1111.md)
+- **Closed-loop check:** one left-wrist session passes ±10° steps and returns, reaching 90% of each command in 0.23–0.25 s. This is one joint and one test condition. [Report](arm_validation/closed_loop/20260924_110748_can0_id9/report.txt)
+
+The headset includes stereo camera views, lidar/IMU panels, and per-eye Depth Anything V2 relative depth plus RAFT optical flow. Relative depth is rescaled per image; it is not calibrated metric stereo depth. The CPU vision grid refreshes slowly and does not close the arm-control loop.
+
+## Engineering decisions and tradeoffs
+
+- Batch PDO-3 position/feedforward messages and collect replies against a shared deadline, replacing serial per-joint waits that timed out over USB CAN.
+- Start in damping; require explicit arming and held grip for motion. Reject estimated controller poses and guard arm-bus USB identities.
+- Fit per-joint gravity compensation and constrain power to calibrated limits. Live tuning has persistent profiles and undo.
+- Keep voice, camera, screen share, and control in separate processes. Heavy vision work runs only while requested.
+
+This remains a lab prototype. Tracking depends on headset visibility, CAN timing can vary, and a software arm/stop gesture is not a physical emergency stop. Legs and walking-policy deployment are outside this teleoperation path.
+
+## Setup and checks
+
+Use Linux, Python 3.10, the upstream robot assets/low-level dependencies, and the packages in `pyproject.toml`. The submodules use SSH URLs; GitHub SSH access is required unless those URLs are changed to HTTPS. Vision and voice helpers need additional models and system services documented in the [operator guide](docs/VR_TELEOP.md).
+
+```bash
+git clone --recurse-submodules https://github.com/joses2017smjh/quest-vr-teleop.git
+cd quest-vr-teleop
+# After preparing the documented .venv and optional helper dependencies:
+./scripts/teleop/bringup.py --sim
+./scripts/teleop/bringup.py status
 ```
+
+Open the printed headset URL and configure the documented secure-origin/USB-localhost path for WebXR. For hardware bring-up, verify this unit's bus map and calibration first, start with the arms hanging at zero, then use `./scripts/teleop/bringup.py`.
+
+```bash
+.venv/bin/python tools/test_teleop_tuning.py
+.venv/bin/python tools/test_voice_typer.py
+.venv/bin/python tools/test_claude_sessions.py
+# Separate QuickJS environment; no robot or headset required:
+python tools/test_quest_page.py
+```
+
+The tuning check uses simulated arms and a scratch profile. Voice/session checks require tmux; the page check requires QuickJS and the robot-model assets for its full geometry checks. These tests do not measure physical manipulation performance.
+
+**Stack:** Python, JavaScript/WebXR, Pink, Pinocchio, QP IK, SocketCAN, Arduino, OpenCV, ONNX Runtime, PyTorch, Vosk, Whisper, Piper, tmux.
+
+## Upstream attribution and license
+
+This is my teleoperation fork of [Berkeley Humanoid Lite](https://github.com/HybridRobotics/Berkeley-Humanoid-Lite), not the original robot design. Upstream robot documentation is [here](https://berkeley-humanoid-lite.gitbook.io/berkeley-humanoid-lite-docs). Code is under the [MIT license](LICENCE); upstream assets retain their respective terms, including CC BY-SA 4.0 where specified.
