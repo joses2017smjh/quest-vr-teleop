@@ -1,4 +1,5 @@
 > **This fork:** Quest 2 VR teleop for the arms, live tuning, voice + Claude in the headset, robot vision. See [docs/VR_TELEOP.md](docs/VR_TELEOP.md).
+> Next steps: [docs/ROADMAP_2026-10-02.md](docs/ROADMAP_2026-10-02.md). Learning from demonstration (recording, LeRobot conversion, ACT / π0.5 / GR00T N1.7 training, matched evaluation): [docs/LFD_PIPELINE.md](docs/LFD_PIPELINE.md).
 
 # Berkeley Humanoid Lite
 

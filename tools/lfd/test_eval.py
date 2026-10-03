@@ -164,7 +164,8 @@ def protocol_with(**changes) -> dict:
 
 def test_schedule(tmp: Path) -> None:
     protocol = es.default_protocol()
-    check(es.check_protocol(protocol) == [], "the template protocol passes its own checks", str(es.check_protocol(protocol)))
+    problems = es.check_protocol(protocol)
+    check(problems == [], "the template protocol passes its own checks", str(problems))
     schedule = es.build_schedule(protocol)
     trials = schedule["trials"]
     policies = es.policy_ids(protocol)
@@ -368,7 +369,8 @@ def test_log(tmp: Path) -> None:
     check(code == 2 and "unknown trial id" in err, "refuses an unknown trial id", err)
     third = order[2]
     code, _, err = log_trial("--trial", third["trial"], "--success", "no", "--timed-out", "no")
-    check(code == 2 and f"the next trial is {order[1]['trial']}" in err, "refuses a trial out of order without a reason",
+    check(code == 2 and f"the next trial is {order[1]['trial']}" in err,
+          "refuses a trial out of order without a reason",
           err)
     code, _, err = log_trial("--trial", third["trial"], "--success", "no", "--timed-out", "no",
                              "--out-of-order", "pi server restarting")
@@ -860,14 +862,16 @@ def test_analysis(tmp: Path) -> None:
           "the missing trial is flagged and the report says it is incomplete")
     check(kinds.get("out_of_order") == [swapped[1]], "the out-of-order trial is flagged with its reason")
     check(kinds.get("void") == [void_trial], "the void attempt is flagged")
-    check(rescued["trial"] in kinds.get("rule_override", []) and disagree["trial"] in kinds.get("scorer_disagreement", []),
+    check(rescued["trial"] in kinds.get("rule_override", [])
+          and disagree["trial"] in kinds.get("scorer_disagreement", []),
           "a rule override and a scorer disagreement are flagged")
     rows = {r["trial"]: r for r in report["trials"]}
     check(rows[rescued["trial"]]["source"] == "rules" and rows[disagree["trial"]]["source"] == "scorer",
           "the report says which trials the rules decided, and which the blind call")
     check(kinds.get("unblinded") == [unscored["trial"]], "a trial the scorer did not call is flagged as unblinded")
     sens = report["sensitivity"]["missing_as_failure"]["per_policy"]
-    check(all(c["n"] == 20 for c in sens.values()), "sensitivity: every scheduled trial counts, missing ones as failures")
+    check(all(c["n"] == 20 for c in sens.values()),
+          "sensitivity: every scheduled trial counts, missing ones as failures")
     op = report["sensitivity"]["operator_calls"]["per_policy"]
     check(op["groot_n17"]["successes"] == 9 and op["pi05"]["successes"] == 12,
           "sensitivity: the operator's own calls give the planned counts")
