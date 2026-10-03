@@ -22,6 +22,7 @@ import struct
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 from pathlib import Path
 
@@ -271,6 +272,140 @@ def main() -> int:
     if len(failures) == before:
         print("ok    sound-alikes: cloud/plot/cloth session -> Claude session, serval -> servo, "
               "C-S-C-R-C-P-Y -> scrcpy; the weather's clouds left alone")
+
+    # 0c. Demonstration episodes for recorder.py: every phrase exactly, "stop" never one of
+    # them (to this operator it means the motors), and the other commands what they were.
+    before = len(failures)
+    start, discard, status = ({"do": "episode", "cmd": "start"}, {"do": "episode", "cmd": "discard"},
+                              {"do": "episode", "cmd": "status"})
+    success, failure, aborted, unsure = ({"do": "episode", "cmd": "end", "outcome": outcome}
+                                         for outcome in ("success", "failure", "aborted", None))
+    for said, wanted in (("start episode", start), ("new episode", start), ("start recording", start),
+                         ("Start a new episode.", start),
+                         ("end episode success", success), ("end episode succeeded", success),
+                         ("end episode good", success), ("end episode pass", success),
+                         ("End episode, success.", success),
+                         ("end episode fail", failure), ("end episode failed", failure),
+                         ("end episode failure", failure), ("end episode bad", failure),
+                         ("abort episode", aborted), ("cancel episode", aborted),
+                         ("end episode aborted", aborted), ("episode cancelled", aborted),
+                         ("Cancelled the episode.", aborted), ("canceled episode", aborted),
+                         ("end episode", unsure), ("end episode not good", unsure),
+                         ("end episode success no fail", unsure),
+                         ("discard episode", discard), ("delete episode", discard), ("Delete the episode.", discard),
+                         ("episode status", status)):
+        got = parse_command(said)
+        if got != wanted:
+            failures.append(f"'agent, {said}' does {got}, not {wanted}")
+    for said in ("stop", "stop episode", "stop the episode", "stop recording", "stop episode success",
+                 "stop episode more power left yaw", "start", "status", "recording", "end", "cancel",
+                 "new session"):
+        got = parse_command(said)
+        if got.get("do") == "episode":
+            failures.append(f"'agent, {said}' became an episode command: {got}")
+    # A sentence that names an episode never tunes the arms, whatever else is in it: the episode
+    # command, or nothing ("undo episode" must not take back the last tuning change).
+    for said, wanted in (("end episode success more power left yaw", success),
+                         ("end episode fail, it needs more power", failure),
+                         ("End episode success, the left elbow needed more power.", success),
+                         ("start episode less sensitive", start), ("discard episode undo", discard),
+                         ("episode status flip the right wrist", status),
+                         ("start recording more gravity left pitch", start),
+                         ("undo episode", {"do": "unknown"}), ("undo the last episode", {"do": "unknown"}),
+                         ("stop episode more power left yaw", {"do": "unknown"}),
+                         ("stop recording, less power right elbow", {"do": "unknown"})):
+        got = parse_command(said)
+        if got != wanted:
+            failures.append(f"'agent, {said}' does {got}, not {wanted}")
+    tunes = ("more power left yaw", "less power right elbow", "more gravity left pitch", "less sensitive",
+             "more sensitivity", "flip the right wrist", "reverse left pitch", "undo that", "undo")
+    for phrase in ("start episode", "new episode", "start recording", "end episode success", "end episode fail",
+                   "end episode", "abort episode", "cancel episode", "discard episode", "episode status",
+                   "stop episode", "stop recording", "undo episode", "episode", "recordings"):
+        for tune in tunes:
+            for said in (f"{phrase} {tune}", f"{tune} {phrase}", f"{phrase}, it needs {tune}"):
+                got = parse_command(said)
+                if got.get("do") == "tune":
+                    failures.append(f"'agent, {said}' tunes the arms: {got}")
+    for said, wanted in (("help", {"do": "help"}), ("what can you do", {"do": "help"}),
+                         ("open a new claude session", {"do": "open_session", "new": True}),
+                         ("close session a", {"do": "close_session", "name": "A"}),
+                         ("which sessions are saved", {"do": "list_sessions"}),
+                         ("more power left yaw", {"do": "tune", "what": "power", "joint": "left yaw", "step": 1}),
+                         ("undo that", {"do": "tune", "what": "undo"}),
+                         ("camera still", {"do": "camera", "mode": "still"}),
+                         ("camera follow my head", {"do": "camera", "mode": "head"}),
+                         ("camera track me", {"do": "camera", "mode": "track"}),
+                         ("stop", {"do": "unknown"})):
+        got = parse_command(said)
+        if any(got.get(key) != value for key, value in wanted.items()):
+            failures.append(f"'agent, {said}' now does {got}, not {wanted}")
+    if len(failures) == before:
+        print("ok    episodes: start/new episode, start recording, end episode success|fail, abort/cancel(led)/"
+              "aborted, discard/delete, episode status; 'stop' never one; a sentence naming an episode never "
+              "tunes the arms (15 x 9 mixes, both orders); sessions, tuning, camera, help unchanged")
+
+    # 0d. What the headset hears back: recorder.py's reply, an end without an outcome asked
+    # again without sending anything, and a recorder that is not there.
+    import voice_typer
+    before = len(failures)
+    port = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    port.bind(("127.0.0.1", 0))
+    port.settimeout(0.3)
+    saved_port, voice_typer.RECORDER_PORT = voice_typer.RECORDER_PORT, port.getsockname()[1]
+    heard: list[dict] = []
+    try:
+        unsure_reply = voice_typer.run_episode(parse_command("end episode"))
+        try:
+            heard.append(json.loads(port.recvfrom(4096)[0]))
+        except socket.timeout:
+            pass
+        if heard or unsure_reply.get("said") != "say end episode success or end episode fail":
+            failures.append(f"'end episode' without an outcome was sent ({heard}) or not asked again: {unsure_reply}")
+
+        def recorder() -> None:
+            try:
+                data, sender = port.recvfrom(4096)
+            except socket.timeout:
+                return
+            heard.append(json.loads(data))
+            port.sendto(json.dumps({"ok": True, "said": "ep_0000 success: 61.0 s"}).encode(), sender)
+
+        answering = threading.Thread(target=recorder)
+        answering.start()
+        reply = voice_typer.run_episode(parse_command("end episode success"))
+        answering.join(timeout=3)
+        if heard != [{"cmd": "end", "outcome": "success"}]:
+            failures.append(f"the recorder was sent {heard}, not {{'cmd': 'end', 'outcome': 'success'}}")
+        elif reply != {"do": "recorder", "ok": True, "said": "ep_0000 success: 61.0 s"}:
+            failures.append(f"the recorder's answer is not passed on as it is: {reply}")
+        # a recorder that is there but busy (an end's save, a start's sync) is not "not running"
+        saved_timeout, voice_typer.RECORDER_TIMEOUT = voice_typer.RECORDER_TIMEOUT, 0.3
+        try:
+            busy = voice_typer.run_episode(parse_command("episode status"))
+        finally:
+            voice_typer.RECORDER_TIMEOUT = saved_timeout
+        if busy.get("ok") is not False or not busy.get("said", "").startswith("no answer from the recorder") \
+                or "episode status" not in busy["said"]:
+            failures.append(f"a recorder slow to answer is not reported as such: {busy}")
+        port.close()                                    # nobody listens there now
+        asked = time.monotonic()
+        gone = voice_typer.run_episode(parse_command("episode status"))
+        if gone != {"do": "recorder", "ok": False, "said": "the recorder is not running"} \
+                or time.monotonic() - asked > 1.0:
+            failures.append(f"a recorder that is not running is not reported as such, at once: {gone} after "
+                            f"{time.monotonic() - asked:.1f} s")
+    finally:
+        voice_typer.RECORDER_PORT = saved_port
+        port.close()
+    page = (REPO / "scripts/teleop/quest_bridge.html").read_text()
+    if 'c.do === "recorder"' not in page:
+        failures.append("quest_bridge.html has no runCommand case for {do: 'recorder'}: the headset never shows "
+                        "the recorder's answer")
+    if len(failures) == before:
+        print("ok    voice_typer passes the recorder's answer on as {do: 'recorder'}, and quest_bridge.html shows "
+              "it; 'end episode' alone is asked again, nothing sent; a busy recorder -> 'no answer ... episode "
+              "status'; none -> 'the recorder is not running', at once")
 
     with tempfile.TemporaryDirectory() as tmp:
         work = Path(tmp)

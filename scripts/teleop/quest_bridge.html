@@ -446,6 +446,7 @@
     if (c.do === "session_failed") return done("sessions: " + (c.why || "?"));
     if (c.do === "tuned") return done((c.ok ? "tuned: " : "not tuned: ") + (c.said || "?"));
     if (c.do === "felt") return done((c.ok ? "the robot's face: " : "") + (c.said || "?"));   // face_display.py
+    if (c.do === "recorder") return done((c.ok ? "recorder: " : "recorder - not done: ") + (c.said || "?"));
     if (c.do === "escaped") {
       return done(c.what ? `cancelled “${c.what}” - the session is at its prompt again`
                          : "no dialog on that session - nothing sent (Esc would stop its work)");

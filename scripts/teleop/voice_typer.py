@@ -376,7 +376,8 @@ FEELINGS = {"happy": "happy", "glad": "happy", "smile": "happy", "smiling": "hap
 FACE_PORT = 11010             # face_display.py: the tracker's reports, and these
 AGENT_HELP = ("open claude session [called X] · close session [X or its title] · saved sessions · open the <title> session · developer / calibration · vision on/off · repeat · screen 1/2 · stop/start looking to swap · camera track/head/still · details · recenter · reset panel · "
               "show camera/screen/robot · hands-free off · hands on/off · look happy/sad/angry/surprised · your own moods · "
-              "show the spark · help · close (the menu)")
+              "show the spark · start/end episode success|fail · discard episode · episode status · "
+              "help · close (the menu)")
 
 
 def parse_command(text: str) -> dict:
@@ -394,6 +395,12 @@ def parse_command(text: str) -> dict:
         return {"do": "unknown"}
     if have & {"help", "commands"} or "what can you do" in joined:
         return {"do": "help"}
+    # demonstrations for recorder.py, before tuning and sessions: a sentence that names an episode is
+    # about the recording, never a live change to the arms ("end episode fail, it needs more power" must
+    # not raise a joint's power, nor "undo episode" take back the last tuning), and "new episode" is not
+    # a Claude session. One it cannot read, "stop episode" among them, does nothing at all.
+    if have & EPISODE_WORDS:
+        return parse_episode(have) or {"do": "unknown"}
     # the arms, tuned while you drive (run_teleop's tuning port, as tools/teleop_tune.py)
     tune = parse_tune(words, have)
     if tune:
@@ -506,6 +513,73 @@ def send_tune(command: dict) -> dict:
         return {"ok": False, "said": "run_teleop did not answer (is it running, and new enough?)"}
     finally:
         link.close()
+
+
+RECORDER_PORT = 11015         # recorder.py takes episode commands here (tools/lfd/record_ctl.py)
+RECORDER_TIMEOUT = 4.0        # s; an end is answered before its save, but a start still syncs episode.json
+EPISODE_WORDS = {"episode", "episodes", "recording", "recordings"}   # a sentence with one never tunes the arms
+EPISODE_GOOD = {"success", "successful", "succeeded", "good", "pass", "passed"}
+EPISODE_BAD = {"fail", "failed", "failure", "bad"}
+EPISODE_ABORT = {"abort", "aborted", "cancel", "cancelled", "canceled"}
+
+
+def parse_episode(have: set[str]) -> dict | None:
+    """"start episode", "end episode success", "abort episode", "discard episode", "episode
+    status" -> a command for recorder.py; None when it is none of those.
+
+    "stop" never is one: said to this robot, stop means the motors."""
+    if "stop" in have:
+        return None
+    if not have & {"episode", "episodes"}:
+        if {"start", "recording"} <= have:                    # "start recording"
+            return {"do": "episode", "cmd": "start"}
+        return None
+    if have & {"discard", "delete"}:
+        return {"do": "episode", "cmd": "discard"}
+    if have & EPISODE_ABORT:
+        return {"do": "episode", "cmd": "end", "outcome": "aborted"}
+    if "end" in have:
+        # The outcome labels the demonstration: both, neither or "not good" is asked again, not guessed.
+        good, bad = bool(have & EPISODE_GOOD), bool(have & EPISODE_BAD)
+        sure = not have & {"not", "no"}
+        outcome = "success" if good and not bad and sure else "failure" if bad and not good and sure else None
+        return {"do": "episode", "cmd": "end", "outcome": outcome}
+    if have & {"start", "new"}:
+        return {"do": "episode", "cmd": "start"}
+    if "status" in have:
+        return {"do": "episode", "cmd": "status"}
+    return None
+
+
+def send_episode(command: dict) -> dict:
+    """An episode command for recorder.py, and what it said back."""
+    link = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    link.settimeout(RECORDER_TIMEOUT)
+    try:
+        # connected, so a recorder that is not running is refused at once: a timeout means a busy one
+        link.connect(("127.0.0.1", RECORDER_PORT))
+        link.send(json.dumps({k: v for k, v in command.items() if k != "do"}).encode())
+        reply = json.loads(link.recv(65536))
+        return {"ok": bool(reply.get("ok")), "said": str(reply.get("said", ""))[:160]}
+    except socket.timeout:                  # before OSError, which it is
+        return {"ok": False, "said": f"no answer from the recorder in {RECORDER_TIMEOUT:g} s - it may be busy: "
+                                     "say \"agent, episode status\" before saying it again"}
+    except ConnectionRefusedError:
+        return {"ok": False, "said": "the recorder is not running"}
+    except (OSError, ValueError, AttributeError):
+        return {"ok": False, "said": "the recorder did not answer properly"}
+    finally:
+        link.close()
+
+
+def run_episode(command: dict) -> dict:
+    """"agent, start episode" and the rest -> what to show and say: recorder.py's answer.
+
+    An end without an outcome is not sent: a guessed outcome would mislabel the demonstration."""
+    if command.get("cmd") == "end" and command.get("outcome") is None:
+        return {"do": "recorder", "ok": False, "said": "say end episode success or end episode fail"}
+    reply = send_episode(command)
+    return {"do": "recorder", "ok": reply["ok"], "said": reply["said"]}
 
 
 def send_face(command: dict) -> dict:
@@ -810,6 +884,8 @@ def main() -> int:
             elif command.get("do") == "feel":               # the robot's face
                 reply = send_face(command)
                 command = {"do": "felt", "ok": reply["ok"], "said": reply["said"]}
+            elif command.get("do") == "episode":            # recorder.py: start, end, discard, status
+                command = run_episode(command)
             elif command.get("do") == "escape":             # on the session dictation goes to
                 pane, problem = typist.resolve(on_screen(typist.session))
                 try:

@@ -101,6 +101,10 @@ class ServoLink:
         self.lock = threading.Lock()
         self._closed = False
         self.not_nano: set = set()        # (USB port, device number) of CH340s that are not it
+        # pin -> the last pulse (us) a move() sent successfully since start-up, for run_teleop's
+        # record tap. Bookkeeping only: nothing reads it to decide what to send. Kept through a
+        # re-arm, OFF and a Nano reset alike, so it is a record of commands, not of what a servo holds.
+        self.last_us: dict[int, int] = {}
         threading.Thread(target=self._open, daemon=True).start()
 
     @property
@@ -165,7 +169,11 @@ class ServoLink:
                 return False
 
     def move(self, pin: int, us: int) -> bool:
-        return self._send(f"P {pin} {max(MIN_US, min(MAX_US, int(us)))}")
+        us = max(MIN_US, min(MAX_US, int(us)))
+        ok = self._send(f"P {pin} {us}")
+        if ok:
+            self.last_us[pin] = us            # what was sent, for the record tap only
+        return ok
 
     def off(self) -> bool:
         return self._send("OFF")

@@ -3,6 +3,7 @@
   .venv/bin/python scripts/teleop/quest_bridge.py        # headset page + status relay
   .venv/bin/python scripts/teleop/run_teleop.py          # arms on can0/can1
   .venv/bin/python scripts/teleop/run_teleop.py --sim    # no robot, same headset flow
+  .venv/bin/python scripts/teleop/run_teleop.py --record-tap   # + one row per cycle to recorder.py (UDP 11014)
 
 Headset:
   triple-click X      arm / stop the motors (stop = damping)
@@ -56,6 +57,7 @@ EVENTS = ("x3", "y3", "a", "b", "cam", "camtrack", "camhead", "camstill")
 PERSON_PORT = 11011   # person_track.py -> here: where the operator is, from the camera
 FACE_PORT = 11010     # here -> face_display.py: where the operator is, from the robot
 TUNE_PORT = 11012     # tools/teleop_tune.py, a Claude session, "agent, more power ..." -> here: live changes
+RECORD_TAP_PORT = 11014   # here -> recorder.py: one JSON row per control cycle, only with --record-tap
 TERMINAL_LINES = collections.deque(maxlen=200)
 
 
@@ -528,7 +530,8 @@ class ArmSupervisor:
     def __init__(self, driver, profile: PowerProfile, gravity: GravityModel, solver: TeleopIkSolver,
                  *, gravity_comp: bool = True, caps: np.ndarray | None = None,
                  link_timeout: float = 0.25, link_lost_stop: float = 5.0, viz: MeshcatView | None = None,
-                 servos: ServoLink | None = None, person_port: int = PERSON_PORT, tune_port: int = TUNE_PORT):
+                 servos: ServoLink | None = None, person_port: int = PERSON_PORT, tune_port: int = TUNE_PORT,
+                 record_port: int | None = None):
         self.driver = driver
         self.servos = servos
         self.servo_teleop = ServoTeleop(servos) if servos is not None else None
@@ -544,6 +547,15 @@ class ArmSupervisor:
         self.tune_in = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.tune_in.bind(("127.0.0.1", tune_port))
         self.tune_in.setblocking(False)
+        # --record-tap: one row per cycle to recorder.py (docs/LFD_RECORDING_FORMAT.md, section 2).
+        # Off (None) means no socket and nothing done per cycle: the loop is exactly as before.
+        self.record_port = record_port
+        self.tap = None
+        self.tap_seq = 0
+        self.tap_errors = 0
+        if record_port is not None:
+            self.tap = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            self.tap.setblocking(False)
         self.tune_history: list[tuple] = []          # (key, field, old, new), for undo
         self.reach_at = -math.inf                    # hands sent out of reach, for the hint
         self.reach_since = [0.0, 0.0]
@@ -708,6 +720,8 @@ class ArmSupervisor:
             self.limiter.update(self.limits, now)
 
         self.driver.exchange(self.q_cmd, self.tau_ff, now)
+        if self.tap is not None:
+            self._record_tap()
         self.health.update(dt, self.q_cmd, self.driver.q, self.driver.tau, self.limits,
                            self.driver.miss, self.motors)
         self._diagnose(now)
@@ -752,13 +766,18 @@ class ArmSupervisor:
     def _open_log(self, heading_deg: float) -> None:
         """One JSON line per 40 ms while armed: arm_validation/teleop_logs/<time>.jsonl."""
         folder = Path(__file__).resolve().parents[2] / "arm_validation" / "teleop_logs"
-        folder.mkdir(parents=True, exist_ok=True)
         self.log_path = folder / time.strftime("%Y%m%d_%H%M%S.jsonl")
-        self.log_file = open(self.log_path, "w")
         self.log_last = -math.inf
-        self.log_file.write(json.dumps({"start": time.time(), "heading_deg": round(heading_deg, 1),
-                                        "mirror": self.profile.swap_hands,
-                                        "scale": self.profile.motion_scale}) + "\n")
+        try:
+            folder.mkdir(parents=True, exist_ok=True)
+            self.log_file = open(self.log_path, "w")
+            self.log_file.write(json.dumps({"start": time.time(), "heading_deg": round(heading_deg, 1),
+                                            "mirror": self.profile.swap_hands,
+                                            "scale": self.profile.motion_scale}) + "\n")
+        except OSError as exc:                  # a full disk: teleop goes on without its log
+            self._say(f"Heading {heading_deg:+.0f} deg taken as forward")
+            self._close_log(exc)
+            return
         self._say(f"Heading {heading_deg:+.0f} deg taken as forward; recording to {self.log_path.name}")
 
     def _log_cycle(self, now: float, q_meas) -> None:
@@ -779,18 +798,76 @@ class ArmSupervisor:
                              "target": np.round(self.solver.targets[k].translation, 4).tolist(),
                              "commanded": np.round(sent[k], 4).tolist(),
                              "reached": np.round(got[k], 4).tolist()}
-        f.write(json.dumps(row) + "\n")
+        try:
+            f.write(json.dumps(row) + "\n")
+        except OSError as exc:
+            self._close_log(exc)
 
-    def _close_log(self) -> None:
-        f = getattr(self, "log_file", None)
+    def _close_log(self, failed: OSError | None = None) -> None:
+        """At a stop, or at once when a write fails (a full disk): said once, and the loop carries on."""
+        f, self.log_file = getattr(self, "log_file", None), None   # first: a closed file would raise ValueError
         if f is not None:
-            f.close()
-            self.log_file = None
+            try:
+                f.close()
+            except OSError as exc:              # its last lines could not be written
+                failed = failed or exc
+        if failed is not None:
+            self._say(f"Teleop log stopped: {failed}")
 
     def _log_row(self, row: dict) -> None:
         f = getattr(self, "log_file", None)
         if f is not None:
-            f.write(json.dumps(dict(row, t=round(self.now, 3))) + "\n")
+            try:
+                f.write(json.dumps(dict(row, t=round(self.now, 3))) + "\n")
+            except OSError as exc:
+                self._close_log(exc)
+
+    @staticmethod
+    def _tap_floats(values, digits: int) -> list:
+        """Rounded and flattened, with null for NaN or inf (a joint not heard yet): rows are strict JSON."""
+        return [x if math.isfinite(x) else None
+                for x in np.round(np.asarray(values, dtype=float), digits).ravel().tolist()]
+
+    def _record_tap(self) -> None:
+        """This cycle as one JSON datagram for recorder.py (docs/LFD_RECORDING_FORMAT.md, section 2).
+
+        Fire and forget: it only reads the loop's state, on a non-blocking socket, with no
+        file and no print. A row it cannot build or send is counted in tap_errors and
+        dropped; nothing here may raise into the control loop.
+        """
+        try:
+            seq = self.tap_seq
+            self.tap_seq += 1                  # every cycle, so a gap in seq at the recorder is a lost row
+            t = time.monotonic()               # the recordings' one clock, not the loop's perf_counter
+            # the last pulse ServoLink sent each claw since start-up: a re-arm (a new _Sender) keeps it
+            claw_us = self.servos.last_us if self.servos is not None else {}
+            f = self._tap_floats
+            camera = self.camera
+            row = {
+                "v": 1, "seq": seq, "t": round(t, 6), "state": self.state, "motors": bool(self.motors),
+                "src": "teleop" if self.state == "ARMED" else "cal" if self.state == "CAL" else "idle",
+                "q": f(self.driver.q, 5), "qc": f(self.q_cmd, 5),
+                "tau": f(self.driver.tau, 3), "tff": f(self.tau_ff, 3),
+                "lim": f(self.limits, 3), "zero": f(self.driver.zero_fw, 5),
+                "held": [bool(h) for h in self.solver.held],
+                # the operator's own hands, before any mirror swap (self.hands, not tick's swapped copy)
+                "grip": [bool(g) for g in self.grips],
+                "trig": f(self.triggers, 3),
+                "hand": [None if h is None else f(h.homogeneous, 5) for h in self.hands],
+                "head": None if self.head is None else f(self.head, 5),
+                "tgt": [f(target.translation, 5) if held and target is not None else None
+                        for held, target in zip(self.solver.held, self.solver.targets)],
+                "swap": bool(self.profile.swap_hands), "scale": _num(self.profile.motion_scale, 6),
+                "claw": [claw_us.get(3), claw_us.get(7)],
+                # without the Nano the camera is not driven: its angle is unknown, not the last one aimed at
+                "cam": None if camera is None or not self.servos.ready else f(camera.angle, 5),
+                "cam_mode": None if camera is None else camera.mode,
+                "intervention": False,
+            }
+            payload = json.dumps(row, separators=(",", ":"), allow_nan=False)   # a NaN missed above: dropped
+            self.tap.sendto(payload.encode(), ("127.0.0.1", self.record_port))
+        except Exception:
+            self.tap_errors += 1
 
     # -- live tuning, while you drive: a joint's power and gravity help, the sensitivity,
     # a joint's direction (only while stopped - flipping one that holds makes it jump),
@@ -988,7 +1065,7 @@ class ArmSupervisor:
         while True:
             try:
                 report = json.loads(self.person_in.recv(4096).decode())
-            except (BlockingIOError, ValueError, OSError):
+            except (BlockingIOError, ValueError, OSError, RecursionError):   # RecursionError: "[[[[..." nested
                 break
             if report.get("type") == "person":
                 self.person = report
@@ -1207,6 +1284,7 @@ class ArmSupervisor:
             **self._model_hint(),
             "joints": joints,
             "log": list(TERMINAL_LINES)[-14:],
+            **({"tap_errors": self.tap_errors} if self.tap is not None else {}),   # only with --record-tap
         }
 
     def summary_line(self) -> str:
@@ -1216,6 +1294,8 @@ class ArmSupervisor:
         )
         link = "link ok" if self.link_age < self.link_timeout else "no headset"
         flags = [f"{ARM_JOINTS[i].label}:{t}" for i, t in enumerate(self.health.tags) if t]
+        if self.tap is not None and self.tap_errors:
+            flags.append(f"tap errors {self.tap_errors}")       # rows recorder.py never got
         return f"{self.state:7s} {self.hz:4.0f} Hz  {link}  tau/lim[L..R] {tau}  {' '.join(flags)}"
 
 
@@ -1229,6 +1309,14 @@ def parse_faults(items: list[str]) -> dict[str, str]:
             raise SystemExit(f"bad --sim-fault {item!r}; use KEY={'|'.join(kinds)}, KEY in {sorted(keys)}")
         faults[key] = kind
     return faults
+
+
+def tap_port(text: str) -> int:
+    """--record-tap-port: checked here, or every row's send would fail, quietly, all session."""
+    port = int(text)
+    if not 1024 <= port <= 65535:
+        raise argparse.ArgumentTypeError(f"{text}: a UDP port from 1024 to 65535")
+    return port
 
 
 def parse_args() -> argparse.Namespace:
@@ -1255,6 +1343,12 @@ def parse_args() -> argparse.Namespace:
                         help="live tuning from tools/teleop_tune.py and 'agent, more power ...'")
     parser.add_argument("--link-lost-stop", type=float, default=5.0,
                         help="stop the motors after this many seconds without headset packets")
+    parser.add_argument("--record-tap", action="store_true",
+                        help="send one JSON row per control cycle to recorder.py (docs/LFD_RECORDING_FORMAT.md); "
+                             "off, nothing is sent")
+    parser.add_argument("--record-tap-port", type=tap_port, default=None,
+                        help=f"UDP port on 127.0.0.1 where recorder.py reads the tap rows (default {RECORD_TAP_PORT}); "
+                             "only with --record-tap")
     return parser.parse_args()
 
 
@@ -1304,7 +1398,10 @@ def main() -> int:
         driver, profile, gravity, solver,
         gravity_comp=not args.no_gravity_comp, caps=caps,
         link_lost_stop=args.link_lost_stop, viz=viz, servos=servos, tune_port=args.tune_port,
+        record_port=(args.record_tap_port or RECORD_TAP_PORT) if args.record_tap else None,
     )
+    if args.record_tap_port is not None and not args.record_tap:
+        print("--record-tap-port is ignored without --record-tap: no tap rows are sent", flush=True)
     terminated = []
 
     def on_sigterm(signum, frame):
