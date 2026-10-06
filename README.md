@@ -6,9 +6,9 @@ I built a WebXR-to-robot control path around Berkeley Humanoid Lite: controller 
 
 [Portfolio and hardware demo](https://jose-sanchez-portfolio-com.vercel.app/projects/berkeley-humanoid-vr/) · [Operator guide](docs/VR_TELEOP.md) · [As-built notes](arm_validation/TELEOP_AND_ARM_BRINGUP.md)
 
-[![Quest VR developer panels, calibration, stereo feedback and physical arm control](https://media.githubusercontent.com/media/joses2017smjh/quest-vr-teleop/main/docs/demo/quest-vr-teleop.gif)](https://jose-sanchez-portfolio-com.vercel.app/media/humanoid-vr/quest-vr-teleop.mp4)
+[![Physical arm teleoperation, panel summary, developer workspace, stereo/depth, IMU telemetry, lidar output and calibration](https://media.githubusercontent.com/media/joses2017smjh/quest-vr-teleop/main/docs/demo/quest-vr-teleop.gif?v=20261005-reorder)](https://jose-sanchez-portfolio-com.vercel.app/media/humanoid-vr/quest-vr-teleop.mp4)
 
-*20-second preview from the October 1 recording: developer panels (8 s), model-to-calibration settings and a labeled overview of separate recording frames (8 s), then physical arm control (4 s). Click for the video. Qualitative hardware evidence, not a tracking benchmark or learned locomotion-policy transfer result.*
+*19-second preview from the October 1 recording: physical arm control → panel summary → developer panels → stereo/depth at 1.5× → IMU telemetry → lidar output → calibration. The labeled summary combines separate recording frames. Click for the video. Qualitative hardware evidence, not a tracking benchmark or learned locomotion-policy transfer result.*
 
 ## Problem, solution, contribution
 
