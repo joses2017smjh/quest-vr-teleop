@@ -1,26 +1,34 @@
-# Berkeley Humanoid Lite · Quest VR Teleoperation
+# Berkeley Humanoid Lite — Quest VR Teleoperation
 
-**A Quest 2 browser interface for simulated and physical humanoid arms.**
+**Control physical humanoid arms from a Quest 2 browser, with calibration and robot feedback in the headset.**
 
-I built a WebXR-to-robot control path around Berkeley Humanoid Lite: controller poses, inverse kinematics, SocketCAN actuation, per-joint power calibration, live tuning, and robot feedback inside the headset. The system runs beside the robot on a Linux Intel N150 PC.
+I built the WebXR-to-robot control path: controller poses → inverse kinematics → SocketCAN commands. The system adds per-joint power calibration, gravity feedforward, grip-based motion gating, and live tuning on a Linux Intel N150 PC beside the robot.
 
-[Portfolio and hardware demo](https://jose-sanchez-portfolio-com.vercel.app/projects/berkeley-humanoid-vr/) · [Operator guide](docs/VR_TELEOP.md) · [As-built notes](arm_validation/TELEOP_AND_ARM_BRINGUP.md)
+[![Physical arm teleoperation, headset panels, stereo/depth, IMU, lidar, and calibration](https://media.githubusercontent.com/media/joses2017smjh/quest-vr-teleop/main/docs/demo/quest-vr-teleop.gif?v=20261005-reorder)](https://jose-sanchez-portfolio-com.vercel.app/media/humanoid-vr/quest-vr-teleop.mp4)
 
-[![Physical arm teleoperation, panel summary, developer workspace, stereo/depth, IMU telemetry, lidar output and calibration](https://media.githubusercontent.com/media/joses2017smjh/quest-vr-teleop/main/docs/demo/quest-vr-teleop.gif?v=20261005-reorder)](https://jose-sanchez-portfolio-com.vercel.app/media/humanoid-vr/quest-vr-teleop.mp4)
+*19-second preview from the October 1 recording. Physical arm control leads; the labeled panel summary combines separate frames and the stereo/depth segment plays at 1.5×. Qualitative hardware evidence, not a tracking benchmark.*
 
-*19-second preview from the October 1 recording: physical arm control → panel summary → developer panels → stereo/depth at 1.5× → IMU telemetry → lidar output → calibration. The labeled summary combines separate recording frames. Click for the video. Qualitative hardware evidence, not a tracking benchmark or learned locomotion-policy transfer result.*
+[Hardware video and case study](https://jose-sanchez-portfolio-com.vercel.app/projects/berkeley-humanoid-vr/) · [Operator guide](docs/VR_TELEOP.md) · [As-built lab notes](arm_validation/TELEOP_AND_ARM_BRINGUP.md)
 
-## Problem, solution, contribution
+## Problem and contribution
 
-Upstream teleoperation uses SteamVR and Vive controllers. I replaced that input path with Meta Quest 2 controller tracking in the Quest Browser and added calibration, diagnostics, and feedback for this robot's actual arm wiring.
+The upstream robot uses SteamVR and Vive controllers. I replaced that input path with Meta Quest 2 tracking in the Quest Browser and integrated the transport, IK, arm drivers, calibration, diagnostics, and headset feedback for this robot's wiring.
 
-The same headset flow can drive an offline joint model or the physical arms. The simulator models joint-side PD control, gravity, friction, torque limits, and end stops; it supports rehearsal and software tests, not proof of full-body policy transfer.
+The same headset flow can drive physical arms or an offline joint model. The offline driver includes PD control, gravity, friction, torque limits, and end stops for rehearsal and software checks. This work covers arm teleoperation; learned locomotion and walking-policy transfer are separate projects.
 
-## Architecture
+## Evidence at a glance
+
+| Check | Recorded result | Scope |
+| --- | --- | --- |
+| Hardware integration | Controller tracking, UDP reception, arming, and joint movement recorded | Ten joints on two 1-Mbps arm buses; this unit's right wrist is ID 12. [Lab notes](arm_validation/TELEOP_AND_ARM_BRINGUP.md) |
+| Power calibration | **10/10 joints recorded `OK`** | Joint-specific torque ceilings and gravity fits; not a manipulation-success rate. [Report](arm_validation/calibration_20260924_1111.md) |
+| Closed-loop wrist test | ±10° steps and returns passed; 90% response in **0.23–0.25 s** | One left-wrist session and test condition. [Report](arm_validation/closed_loop/20260924_110748_can0_id9/report.txt) |
+
+## How it works
 
 ```mermaid
 flowchart LR
-  A[Quest 2 WebXR] -->|Poses and buttons| B[Python HTTP/WebSocket bridge]
+  A[Quest 2 WebXR] -->|Poses and buttons| B[Python HTTP / WebSocket bridge]
   B -->|UDP| C[Pink / Pinocchio IK and arm supervisor]
   C --> D[PDO-3 SocketCAN driver]
   D --> E[Ten arm joints]
@@ -30,54 +38,56 @@ flowchart LR
   B -->|Status and panels| A
 ```
 
-- `scripts/teleop/quest_bridge.html` and `quest_bridge.py`: WebXR input, transports, headset panels, and status relay.
-- `run_teleop.py`: inverse kinematics, motion gating, calibration, and tuning.
-- `arm_driver.py` and `arm_power.py`: hardware/offline drivers, batched CAN replies, gravity feedforward, and torque limits.
-- `arm_validation/`: calibration reports, encoder audits, closed-loop probes, and session logs.
+| Source | Responsibility |
+| --- | --- |
+| [WebXR page](scripts/teleop/quest_bridge.html) / [bridge](scripts/teleop/quest_bridge.py) | Controller input, transports, headset panels, and status relay |
+| [Arm supervisor](scripts/teleop/run_teleop.py) | IK, arming, grip gating, calibration, and live tuning |
+| [Driver](scripts/teleop/arm_driver.py) / [power model](scripts/teleop/arm_power.py) | Hardware/offline drivers, batched CAN replies, gravity feedforward, and torque limits |
+| [Validation records](arm_validation/) | Calibration reports, encoder audits, closed-loop probes, and session logs |
 
-## Evidence and limits
+## Engineering decisions
 
-- **Physical arm bring-up:** the as-built notebook records controller tracking, UDP packets, arming, and joint movement. Ten joints are mapped across two 1-Mbps arm buses; the right wrist answers as ID 12 on this unit. [Lab notes](arm_validation/TELEOP_AND_ARM_BRINGUP.md)
-- **Ten-joint calibration:** the September 24 report records an `OK` verdict for each arm joint, with joint-specific torque ceilings and gravity fits. These are calibration results, not a general manipulation-success rate. [Report](arm_validation/calibration_20260924_1111.md)
-- **Closed-loop check:** one left-wrist session passes ±10° steps and returns, reaching 90% of each command in 0.23–0.25 s. This is one joint and one test condition. [Report](arm_validation/closed_loop/20260924_110748_can0_id9/report.txt)
+- **Batch CAN commands.** Send PDO-3 position/feedforward messages together and collect replies against one deadline; serial per-joint waits timed out over USB CAN.
+- **Require deliberate motion input.** Start in damping, require explicit arming and held grip, reject estimated controller poses, and guard the arm adapters' USB identities.
+- **Calibrate each joint.** Fit gravity compensation and constrain torque to calibrated limits. Live profiles persist and support undo.
+- **Separate expensive helpers.** Voice, cameras, screen sharing, and control run in separate processes; heavy vision runs only when requested.
 
-The headset includes stereo camera views, lidar/IMU panels, and per-eye Depth Anything V2 relative depth plus RAFT optical flow. Relative depth is rescaled per image; it is not calibrated metric stereo depth. The CPU vision grid refreshes slowly and does not close the arm-control loop.
+The headset includes stereo camera views, lidar/IMU panels, Depth Anything V2 relative depth, and RAFT optical flow. Depth is rescaled per image, not calibrated metric stereo depth. The CPU vision grid refreshes slowly and does not close the arm-control loop.
 
-## Engineering decisions and tradeoffs
+## Setup and operation
 
-- Batch PDO-3 position/feedforward messages and collect replies against a shared deadline, replacing serial per-joint waits that timed out over USB CAN.
-- Start in damping; require explicit arming and held grip for motion. Reject estimated controller poses and guard arm-bus USB identities.
-- Fit per-joint gravity compensation and constrain power to calibrated limits. Live tuning has persistent profiles and undo.
-- Keep voice, camera, screen share, and control in separate processes. Heavy vision work runs only while requested.
-
-This remains a lab prototype. Tracking depends on headset visibility, CAN timing can vary, and a software arm/stop gesture is not a physical emergency stop. Legs and walking-policy deployment are outside this teleoperation path.
-
-## Setup and checks
-
-Use Linux, Python 3.10, the upstream robot assets/low-level dependencies, and the packages in `pyproject.toml`. The submodules use SSH URLs; GitHub SSH access is required unless those URLs are changed to HTTPS. Vision and voice helpers need additional models and system services documented in the [operator guide](docs/VR_TELEOP.md).
+Requires Linux, Python 3.10, tmux, the upstream robot assets and low-level dependencies, and a provisioned `.venv` using the workspace's [package configuration](pyproject.toml) and [lockfile](uv.lock). Vision and voice helpers additionally need their models and system services. The [operator guide](docs/VR_TELEOP.md) describes this configured rig; a minimal standalone teleop installer is not yet provided.
 
 ```bash
 git clone --recurse-submodules https://github.com/joses2017smjh/quest-vr-teleop.git
 cd quest-vr-teleop
-# After preparing the documented .venv and optional helper dependencies:
+# After provisioning .venv and the optional helper dependencies:
 ./scripts/teleop/bringup.py --sim
 ./scripts/teleop/bringup.py status
 ```
 
-Open the printed headset URL and configure the documented secure-origin/USB-localhost path for WebXR. For hardware bring-up, verify this unit's bus map and calibration first, start with the arms hanging at zero, then use `./scripts/teleop/bringup.py`.
+The submodules use SSH URLs, so cloning them requires GitHub SSH access or locally changing those URLs to HTTPS. `--sim` avoids CAN and motors but still starts camera, sensor, and other helper processes. Open the printed headset URL and configure the secure-origin/USB-localhost path documented for WebXR.
+
+Hardware operation uses `./scripts/teleop/bringup.py` after verifying this unit's bus map and calibration, with both arms hanging at zero. Follow the operator guide: the startup pose sets the joint zero, and stock upstream bus assignments differ on this rig. Software stop/arming gestures do not replace a physical emergency stop.
+
+## Software checks
+
+From the configured environment:
 
 ```bash
 .venv/bin/python tools/test_teleop_tuning.py
 .venv/bin/python tools/test_voice_typer.py
 .venv/bin/python tools/test_claude_sessions.py
-# Separate QuickJS environment; no robot or headset required:
+# Separate Python environment with QuickJS:
 python tools/test_quest_page.py
 ```
 
-The tuning check uses simulated arms and a scratch profile. Voice/session checks require tmux; the page check requires QuickJS and the robot-model assets for its full geometry checks. These tests do not measure physical manipulation performance.
+The tuning check uses simulated arms and a scratch profile. Voice/session checks require tmux. The page test uses stubbed browser objects; its geometry checks also invoke the provisioned `.venv` and need robot-model assets. These checks need no robot or headset and do not measure manipulation performance.
 
-**Stack:** Python, JavaScript/WebXR, Pink, Pinocchio, QP IK, SocketCAN, Arduino, OpenCV, ONNX Runtime, PyTorch, Vosk, Whisper, Piper, tmux.
+## Limits and attribution
 
-## Upstream attribution and license
+This remains a lab prototype. Tracking depends on headset visibility, CAN timing can vary, and hardware validation is limited to the recorded setup. The calibration and single-joint checks do not establish general task reliability.
 
-This is my teleoperation fork of [Berkeley Humanoid Lite](https://github.com/HybridRobotics/Berkeley-Humanoid-Lite), not the original robot design. Upstream robot documentation is [here](https://berkeley-humanoid-lite.gitbook.io/berkeley-humanoid-lite-docs). Code is under the [MIT license](LICENCE); upstream assets retain their respective terms, including CC BY-SA 4.0 where specified.
+**Stack:** Python, JavaScript/WebXR, Pink, Pinocchio, QP IK, SocketCAN, Arduino, OpenCV, ONNX Runtime, PyTorch, Vosk, Whisper, Piper, and tmux.
+
+My teleoperation fork builds on [Berkeley Humanoid Lite](https://github.com/HybridRobotics/Berkeley-Humanoid-Lite); the robot design is upstream work. [Upstream documentation](https://berkeley-humanoid-lite.gitbook.io/berkeley-humanoid-lite-docs). Code: [MIT](LICENCE). Upstream assets retain their respective terms, including CC BY-SA 4.0 where specified.
