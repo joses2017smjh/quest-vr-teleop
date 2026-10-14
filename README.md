@@ -4,9 +4,9 @@
 
 I built the WebXR-to-robot control path: controller poses → inverse kinematics → SocketCAN commands. The system adds per-joint power calibration, gravity feedforward, grip-based motion gating, and live tuning on a Linux Intel N150 PC beside the robot.
 
-[![Physical arm teleoperation, headset panels, stereo/depth, IMU, lidar, and calibration](https://media.githubusercontent.com/media/joses2017smjh/quest-vr-teleop/main/docs/demo/quest-vr-teleop.gif?v=20261005-reorder)](https://jose-sanchez-portfolio-com.vercel.app/media/humanoid-vr/quest-vr-teleop.mp4)
+[![Quest controller motion driving the physical humanoid arms](docs/previews/arm-control-20261014.gif)](https://jose-sanchez-portfolio-com.vercel.app/media/humanoid-vr/quest-vr-teleop.mp4)
 
-*19-second preview from the October 1 recording. Physical arm control leads; the labeled panel summary combines separate frames and the stereo/depth segment plays at 1.5×. Qualitative hardware evidence, not a tracking benchmark.*
+*Physical arm control from the October 1 recording, at the recorded playback rate. [Watch the complete 16.5-second preview](https://jose-sanchez-portfolio-com.vercel.app/media/humanoid-vr/quest-vr-teleop.mp4). Qualitative hardware evidence, not a tracking benchmark.*
 
 [Hardware video and case study](https://jose-sanchez-portfolio-com.vercel.app/projects/berkeley-humanoid-vr/) · [Operator guide](docs/VR_TELEOP.md) · [As-built lab notes](arm_validation/TELEOP_AND_ARM_BRINGUP.md)
 
@@ -16,13 +16,15 @@ The upstream robot uses SteamVR and Vive controllers. I replaced that input path
 
 The same headset flow can drive physical arms or an offline joint model. The offline driver includes PD control, gravity, friction, torque limits, and end stops for rehearsal and software checks. This work covers arm teleoperation; learned locomotion and walking-policy transfer are separate projects.
 
-## Evidence at a glance
+## Latest recorded evidence
+
+Documentation and previews refreshed **October 14, 2026**. Hardware evidence remains the September 24 calibration/step tests and October 1 teleoperation recording; this refresh does not introduce a new hardware trial.
 
 | Check | Recorded result | Scope |
 | --- | --- | --- |
 | Hardware integration | Controller tracking, UDP reception, arming, and joint movement recorded | Ten joints on two 1-Mbps arm buses; this unit's right wrist is ID 12. [Lab notes](arm_validation/TELEOP_AND_ARM_BRINGUP.md) |
-| Power calibration | **10/10 joints recorded `OK`** | Joint-specific torque ceilings and gravity fits; not a manipulation-success rate. [Report](arm_validation/calibration_20260924_1111.md) |
-| Closed-loop wrist test | ±10° steps and returns passed; 90% response in **0.23–0.25 s** | One left-wrist session and test condition. [Report](arm_validation/closed_loop/20260924_110748_can0_id9/report.txt) |
+| Power calibration · Sep 24 | **10/10 joints recorded `OK`** | Joint-specific torque ceilings and gravity fits; not a manipulation-success rate. [Report](arm_validation/calibration_20260924_1111.md) |
+| Closed-loop wrist test · Sep 24 | ±10° steps and returns passed; 90% response in **0.23–0.25 s** | One left-wrist session and test condition. [Report](arm_validation/closed_loop/20260924_110748_can0_id9/report.txt) |
 
 ## How it works
 
@@ -53,6 +55,12 @@ flowchart LR
 - **Separate expensive helpers.** Voice, cameras, screen sharing, and control run in separate processes; heavy vision runs only when requested.
 
 The headset includes stereo camera views, lidar/IMU panels, Depth Anything V2 relative depth, and RAFT optical flow. Depth is rescaled per image, not calibrated metric stereo depth. The CPU vision grid refreshes slowly and does not close the arm-control loop.
+
+### Operator panels
+
+[![Headset panel overview, developer workspace, stereo and relative-depth views, lidar output, and arm calibration](docs/previews/operator-panels-20261014.gif)](https://jose-sanchez-portfolio-com.vercel.app/projects/berkeley-humanoid-vr/)
+
+*12.5-second excerpt of the existing recording. The overview combines separate source frames; stereo/depth plays at 1.5×. The oversized IMU close-up has been removed. [Clip provenance](docs/previews/manifest.json).*
 
 ## Setup and operation
 

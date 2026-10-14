@@ -1,0 +1,28 @@
+{
+  "source": "Portfolio VR preview at commit 769b9b56994de84573a08b3a2fca848dc47ee176",
+  "source_url": "https://jose-sanchez-portfolio-com.vercel.app/media/humanoid-vr/quest-vr-teleop.mp4",
+  "source_sha256": "56f83e3cee2de2e323bcec063bc7d9942f0ede0748159c2b329cb55c4499646a",
+  "scope": "Re-exports of existing October 1 hardware footage. No new hardware run. Over-cropped IMU segment removed in the source preview; operator summary combines separate frames and stereo/depth plays at 1.5x.",
+  "clips": [
+    {
+      "file": "docs/previews/arm-control-20261014.gif",
+      "source_start_seconds": 0,
+      "duration_seconds": 4,
+      "fps": 8,
+      "width": 640,
+      "height": 360,
+      "bytes": 4240268,
+      "sha256": "8d34a40439bccad6f34f998773b8a0dc58b9ead08a05e1e8c30fc813f1250f82"
+    },
+    {
+      "file": "docs/previews/operator-panels-20261014.gif",
+      "source_start_seconds": 4,
+      "duration_seconds": 12.5,
+      "fps": 8,
+      "width": 640,
+      "height": 360,
+      "bytes": 4191529,
+      "sha256": "ed1ae109afd3074ee6fa27caaf5f7eea969d36ccb1017fb4fe64e5bd7afb78b9"
+    }
+  ]
+}
